@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .account_login {
+        width: 60%;
+        float: left;
+        height: 460px;
+        padding-top: 30px;
+    }
+    .account_login li{
+        border: 0px;
+    }
+    .av{
+        font-size: 40px;
+    }
+    .bt{
+        width: 140px;
+        height: 40px;
+        font-size: 16px;
+        text-align: center;
+        padding-left: 10px;
+    }
+    #dc{
+        height: 40px;
+    }
+    .bts{
+        width: 100%;
+        height: 45px;
+        border: 0px;
+        border-radius: 5px;
+        font-size: 20px;
+    }
+</style>
+
+<div class="acc">
+    <div class="account_login">
+        <ul class="list-group" style="border: 1px solid #D3D3D3; padding-left: 40px; 
+            padding-right: 40px; border-radius: 15px; width: 400px; height: 350px;">
+            <li class="list-group-item" style="margin-top: 10px;">
+                <span style="font-size: 28px;">Đăng nhập</span>
+            </li>
+            <li class="list-group-item fr">
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @name = "login", @onsubmit = "return validationForm()" }))
+                {
+                    @Html.TextBox("txtUsername", null, new { @class = "form-control", @id = "dc", @placeholder = "Enter username" })
+                    <span class="spanusername" style="color: red;margin-top: 10px;"></span>
+                    <br />
+                    @Html.Password("txtPassword", null, new { @class = "form-control", @id = "dc", @placeholder = "Enter password" })
+                    <span class="spanpassword" style="color: red;margin-top: 10px;"></span>
+                    <br />
+                    <input type="submit" name="submit" class="bts" value="Login" />
+                }
+            </li>
+            <li class="list-group-item dk">
+                <span>Chưa có tài khoản ?</span>
+                <a class="btn btn-light" href="@Url.Action("Index", "Register")"><span>Đăng kí</span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+

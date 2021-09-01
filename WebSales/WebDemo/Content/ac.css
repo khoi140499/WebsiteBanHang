@@ -1,0 +1,172 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	font-family: 'Raleway', Arial, sans-serif;
+}
+.main{
+	width: 100%;  
+  	min-height: 100vh;
+  	background-size: cover;
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+}
+.account{
+	position: absolute;
+	margin: auto;
+	width: 450px;
+	height: 550px;
+	background: white;
+	box-shadow: 0 0 12px 6px #00000096;
+	box-sizing: border-box;
+	overflow: hidden;
+	z-index: 1;
+}
+/*back to home*/
+.back{
+	width: 40px;
+	height: 550px;
+	position: absolute;
+	margin-left: -205px;
+	z-index: 3;
+}
+.danhmuc{
+	position: absolute;
+}
+.menu_button{
+	position: absolute;
+}
+.menu{
+	width: 150px;
+	height: 370px;
+	margin-top: 10px;
+	margin-left: -110px;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.menu_bar{
+	width: 40px;
+	height: 370px;
+	margin-top: -370px;
+	transition: 0.6s;
+	margin-left: 110px;
+}
+.hien{
+	transform: translateY(370px);
+}
+.menu_bar ul li{
+	border: 0px;
+	text-align: center;
+	width: 40px;
+}
+.menu_bar img{
+	margin-left: -10px;
+}
+.tittle_info:hover .title{
+	transform: translateX(110px);
+}
+.title{
+	position: absolute;
+	margin-left: -225px;
+	margin-top: -26px;
+	z-index: 3;
+	width: 100px;
+	height: 25px;
+	background: white;
+	border-radius: 6px;
+	padding-top: 3px;
+	font-size: 13px;
+	transition: 0.4s;
+}
+/*dang nhap*/
+.account_login{
+	float: left;
+	width: 450px;
+	height: 550px;
+	transition: 0.6s;
+	position: absolute;
+}
+.login_out{
+	transform: translateX(450px);
+}
+.login_in{
+	transform: translateX(0px);
+}
+.account_login ul li{
+	border: 0px;
+}
+.av{
+	height: 70px;
+	line-height: 70px;
+	font-size: 32px;
+	text-align: center;
+}
+.bt{
+	width: 130px;
+	height: 45px;
+	border: 0px;
+}
+.bt i{
+	font-size: 16px;
+}
+.bt:hover{
+	background: linear-gradient(-120deg, #E416FC, #0FCEE0);
+}
+.ac_bt{
+	height: 90px;
+	text-align: center;
+	line-height: 90px;
+}
+.or{
+	font-size: 20px;
+	text-align: center;
+}
+.cs{
+	padding-left: 35px;
+}
+.cs input{
+	width: 350px;
+	height: 50px;
+	border-radius: 10px;
+}
+.fr{
+	text-align: center;
+}
+.btn-se{
+	background: #222222;
+	color: white;
+	width: 350px;
+	height: 50px;
+	font-size: 17px;
+}
+.dk{
+	text-align: center;
+}
+/*đăng kí*/
+.account_logup{
+	float: left;
+	width: 450px;
+	height: 550px;
+	transition: 0.6s;
+	margin-left: -450px;
+	position: absolute;
+	z-index: 1;
+}
+.logup_hien{
+	transform: translateX(450px);
+}
+.logup_mat{
+	transform: translateX(-450px);
+}
+.account_logup li{
+	border: 0px;
+}
+.an{
+	font-size: 29px;
+	height: 50px;
+	margin-top: -5px;
+	text-align: center;
+}
+.dn{
+	text-align: center;
+}

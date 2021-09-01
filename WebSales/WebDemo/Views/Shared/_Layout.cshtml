@@ -1,0 +1,434 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thời trang chính hãng giá rẻ</title>
+    <link rel="shortcut icon" href="/img/logo.ico">
+    <script src="/Scripts/jquery.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/Content//bootstrap.min.css">
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/Content/index.css">
+    <link rel="stylesheet" type="text/css" href="/Content/fooster.css">
+    <link rel="stylesheet" type="text/css" href="/Content/slo-wrapper.css">
+    <link rel="stylesheet" type="text/css" href="/Content/menu.css">
+    <style>
+        .spanmenu {
+            color: white;
+        }
+
+        .spanmenu:hover {
+            text-decoration: none;
+            color: white;
+         }
+
+        .card-menu:hover {
+            cursor: pointer;
+        }
+
+        .ts {
+            background-color: white;
+        }
+
+        .lt-card a:hover {
+            text-decoration: none;
+            color: #8B4730;
+        }
+        .inf{
+            position: absolute;
+            width: 200px;
+            text-align:center;
+            height: 130px;
+            background-color: white;
+            border: 1px solid black;
+            margin-left: -40px;
+            margin-top: 10px;
+            z-index: 5;
+            visibility: hidden;
+            transition: 0.1s;
+        }
+        .info-a:hover .inf {
+            visibility: visible;
+            animation: a2 0.4s forwards;
+        }
+        keyframes a2{
+	        0%{
+		        transform: translateX(40px);
+	        }
+	        100%{
+		        transform: translateX(0px);
+	        }
+        }
+        .dx{
+            border: 0px;
+            background-color: white;
+        }
+        .cartcount {
+            position: absolute;
+            width: 25px;
+            height: 17px;
+            border-radius: 20px;
+            background-color: black;
+            transition: 0.2s;
+            margin-left: 13px;
+            margin-top: -10px;
+            opacity: 0.6;
+            text-align: center;
+            font-size: 12px;
+            line-height: 18px;
+            color: white;
+            animation: a10 0.5s ease-in;
+        }
+        @@keyframes a10{
+	        0%{
+		        opacity: 0;
+	        }
+	        100%{
+		        opacity: 0.6;
+	        }
+}
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4 text-right rm">
+                    <span class="t_head">CHẤT LƯỢNG HÀNG ĐẦU, GIÁ CẢ HỢP LÝ</span>
+                </div>
+                <div class="col-xs-4 text-center rm">
+                    <span class="t_head">LUÔN CẬP NHẬT NHỮNG STYLE MỚI NHẤT</span>
+                </div>
+                <div class="col-xs-4 text-left rm">
+                    <span class="t_head">GIAO HÀNG MIỄN PHÍ</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- wrapper -->
+    <div class="wrapper">
+        <div class="container">
+            <div class="navbar">
+                <div class="nv-header">
+                    <a href="@Url.Action("Index", "Home")">
+                        <img class="hv" src="/img/logo.png">
+                    </a>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item timkiem">
+                        <div class="search">
+                            @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "lns" }))
+                            {
+                                @Html.TextBox("search", null, new {@class="form-control", 
+                               @placeholder= "Tìm kiếm sản phẩm trên cửa hàng..." })
+                            }
+                        </div>
+                    </li>
+                    <li class="list-group-item cart_bt lt-card">
+                        @{
+                            HttpCookie ck = Request.Cookies["giohang1"];
+                            if (ck != null && ck.Value != "")
+                            {
+                                if (ck["count"] == "0")
+                                {
+                                    <div class="cartcount" style="display: none;">
+                                        <span id="count">@ck["count"]</span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="cartcount" style="display: block;">
+                                        <span id="count">@ck["count"]</span>
+                                    </div>
+                                }
+
+                            }
+                            else
+                            {
+                                <div class="cartcount" style="display: none">
+                                    <span id="count"></span>
+                                </div>
+                            }
+                        }
+                        @{
+                            HttpCookie cks = Request.Cookies["users"];
+                            if (cks != null && cks.Value != "")
+                            {
+                                <a href="@Url.Action("ThanhToan", "Home")">
+                                    <span>
+                                        <i class="fas fa-cart-plus"></i>
+                                        <span>Giỏ hàng</span>
+                                    </span>
+                                </a>
+                                
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Login", "Login")">
+                                    <span>
+                                        <i class="fas fa-cart-plus"></i>
+                                        <span>Giỏ hàng</span>
+                                    </span>
+                                </a>
+                            }
+                        }
+
+                    </li>
+                    <li class="list-group-item taikhoan lt-card info-a">
+                        @{ 
+                           HttpCookie cookie = Request.Cookies["users"];
+                           if(cookie !=null && cookie.Value != "")
+                           {
+                                <a href="@Url.Action("Infomation", "Home")">
+                                <span>
+                                    <i class="fas fa-user"></i>
+                                    <span>Tài khoản</span>
+                                </span>
+                                </a>
+                                <div class="inf">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <a href="@Url.Action("Infomation","Home")">
+                                                <span>Thông tin tài khoản</span>
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="@Url.Action("ChangeInfomation","Home")">
+                                                <span>Chỉnh sửa thông tin</span>
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                           @using(Html.BeginForm("LogOut", "Home", FormMethod.Post))
+                                             {
+                                                <input type="submit" value="Đăng xuất" class="dx"/>       
+                                             }
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Login", "Login")">
+                                    <span>
+                                        <i class="fas fa-user"></i>
+                                        <span>Tài khoản</span>
+                                    </span>
+                                </a>
+                                }
+                            }
+                    </li>
+                    <div class="col-xs-12 text-right menutong">
+                        <i class="fas fa-bars">
+                        </i>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- menu -->
+    <div class="mnstore ts">
+        <div class="container">
+            <div class="card-menu">
+                <div class="card-menu-img">
+                    <img src="/img/menu1 (1).jpg">
+                </div>
+                <div class="card-menu-nen"></div>
+                <div class="card-menu-txt text-center">
+                    @Html.ActionLink("Trang chủ", "Index", "Home", null, new { @class = "spanmenu" })
+                    <div class="card-menu-gchan1"></div>
+                    <div class="card-menu-gchan2"></div>
+                </div>
+            </div>
+            <div class="card-menu">
+                <div class="card-menu-img">
+                    <img src="/img/menu1 (2).jpg">
+                </div>
+                <div class="card-menu-nen"></div>
+                <div class="card-menu-txt text-center">
+                    @Html.ActionLink("Sản phẩm mới", "SanPhamMoi", "Home", null, new { @class = "spanmenu" })
+                    <div class="card-menu-gchan1"></div>
+                    <div class="card-menu-gchan2"></div>
+                </div>
+            </div>
+            <div class="card-menu">
+                <div class="card-menu-img">
+                    <img src="/img/menu1 (3).jpg">
+                </div>
+                <div class="card-menu-nen"></div>
+                    <div class="card-menu-txt text-center">
+                        @Html.ActionLink("Thời trang nam", "ThoiTrangNam", "Home", null, new { @class = "spanmenu" })
+                        <div class="card-menu-gchan1"></div>
+                        <div class="card-menu-gchan2"></div>
+                    </div>
+            </div>
+            <div class="card-menu">
+                <div class="card-menu-img">
+                    <img src="/img/menu1 (4).jpg">
+                </div>
+                <div class="card-menu-nen"></div>
+                    <div class="card-menu-txt text-center">
+                        @Html.ActionLink("Thời trang nữ", "ThoiTrangNu", "Home", null, new { @class = "spanmenu" })
+                        <div class="card-menu-gchan1"></div>
+                        <div class="card-menu-gchan2"></div>
+                    </div>
+            </div>
+            <div class="card-menu">
+                <div class="card-menu-img">
+                    <img src="/img/menu1 (5).jpg">
+                </div>
+                <div class="card-menu-nen"></div>
+                    <div class="card-menu-txt text-center">
+                        @Html.ActionLink("Thời trang đông", "ThoiTrangDong", "Home", null, new { @class = "spanmenu" })
+                        <div class="card-menu-gchan1"></div>
+                        <div class="card-menu-gchan2"></div>
+                    </div>
+            </div>
+            <div class="card-menu">
+                <div class="card-menu-img">
+                    <img src="/img/menu1 (6).jpg">
+                </div>
+                <div class="card-menu-nen"></div>
+                    <div class="card-menu-txt text-center">
+                        @Html.ActionLink("Phụ kiện nam", "PhuKienNam", "Home", null, new { @class = "spanmenu" })
+                        <div class="card-menu-gchan1"></div>
+                        <div class="card-menu-gchan2"></div>
+                    </div>
+            </div>
+            <div class="card-menu">
+                <div class="card-menu-img">
+                    <img src="/img/menu1 (7).jpg">
+                </div>
+                <div class="card-menu-nen"></div>
+                    <div class="card-menu-txt text-center">
+                        @Html.ActionLink("Phụ kiện nữ", "PhuKienNu", "Home", null, new { @class = "spanmenu" })
+                        <div class="card-menu-gchan1"></div>
+                        <div class="card-menu-gchan2"></div>
+                    </div>
+            </div>
+            <div class="card-menu">
+                <div class="card-menu-img">
+                    <img src="/img/menu1 (8).jpg">
+                </div>
+                <div class="card-menu-nen"></div>
+                    <div class="card-menu-txt text-center">
+                        @Html.ActionLink("Sale", "Sale", "Home", null, new { @class = "spanmenu" })
+                        <div class="card-menu-gchan1"></div>
+                        <div class="card-menu-gchan2"></div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner-image -->
+    <div class="banner-im" style="background-color: white;">
+        <div class="container lm text-center">
+            <img src="/img/banner.png" alt="banner" class="img-responsive">
+        </div>
+    </div>
+
+    <!-- Sơ mi nam -->
+    <div style="height: 30px; width: 100%; color: #FBF8F1;"></div>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <div class="fooster" style="background-image: url('/img/nen.jpg');">
+        <div class="nenphu"></div>
+        <div class="email">
+            <div class="container">
+                <form method="GET">
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="fsearch">ĐĂNG KÍ NHẬN BẢN TIN</label>
+                        </div>
+                        <div class="col-85">
+                            <input type="submit" class="btn btn-danger btn-success" value="Đăng kí"></input>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" placeholder="Nhập email của bạn tại đây..." id="fsearch">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="fo-end">
+            <div class="container">
+                <div class="col-xs-4">
+                    <div class="end-tittle">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="">
+                                    <i class="fas fa-location-arrow"></i>
+                                    <span> Số 6/155 Nguyễn Văn Trỗi, Hà Đông, Hà Nội</span>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="">
+                                    <i class="fas fa-phone"></i>
+                                    <span> 01231397243</span>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>khoidanghoang144@gmail.com</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-4 gv">
+                    <ul class="list-group">
+                        <li class="list-group-item ti">
+                            <span>Về cửa hàng</span>
+                            <div class="gduoi"></div>
+                        </li>
+                        <li class="list-group-item">
+                            <p>Được thành lập vào năm 2012, cửa hàng đã phục vụ cho hơn 10 triệu khách hàng. Cửa hàng luôn cập nhật những mẫu thời trang mới nhất đem đến tay của khách hàng đồng thời đảm bảo mức giá tốt nhất có thể. Luôn đảm bảo quyền lợi của khách hàng lên hàng đầu, sẵn sàng đổi trả, hoàn tiền nếu không vừa ý khách hàng.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-4 hm">
+                    <ul class="list-group">
+                        <li class="list-group-item ti">
+                            <span>Về chúng tôi</span>
+                            <div class="gduoi"></div>
+                        </li>
+                        <li class="list-group-item">
+                            <ul class="list-group km">
+                                <li class="list-group-item">
+                                    <a href="">
+                                        <i class="fab fa-facebook"></i>
+                                        <span>Facebook</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="">
+                                        <i class="fab fa-twitter"></i>
+                                        <span>Twitter</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="">
+                                        <i class="fab fa-telegram"></i>
+                                        <span>Telegram</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="page-f text-center">
+            <div class="container">
+                © 2020 Copyright:<a href="https://github.com/khoi140499" target="_blank"> Fllow me on GitHub</a>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

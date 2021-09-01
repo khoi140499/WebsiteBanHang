@@ -1,0 +1,129 @@
+/*menu-----------------------*/
+.mnstore{
+	float: left;
+	width: 100%;
+	height: 260px;
+	background: white;
+}
+.card-menu{
+	float: left;
+	width: 285px;
+	height: 130px;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.card-menu a{
+	text-decoration: none;
+	color: white;
+}
+.spanmenu{color: white}
+.card-menu-nen{
+	position: absolute;
+	width: 285px;
+	height: 130px;
+	background: linear-gradient(45deg, #22682a 0%,#9b4a1b 40%,#3a342a 100%);;
+	opacity: 0.7;
+	margin-top: -130px;
+}
+.card-menu-txt{
+	width: 285px;
+	height: 130px;
+	position: absolute;
+	margin-top: -130px;
+	color: white;
+	font-size: 27px;
+	padding-top: 30px;
+}
+.card-menu img{
+	transition: 0.3s;
+}
+.card-menu:hover .card-menu-gchan1{
+	transform: rotate(30deg);
+}
+.card-menu:hover .card-menu-gchan2{
+	transform: rotate(-30deg);
+}
+.card-menu:hover img{
+	transform: scale(1.3) translateX(-20px);
+}
+.card-menu-gchan1{
+	position: absolute;
+	width: 200px;
+	height: 1px;
+	background: white;
+	margin-left: 40px;
+	transition: 0.3s;
+}
+.card-menu-gchan2{
+	position: absolute;
+	width: 200px;
+	height: 1px;
+	background: white;
+	margin-left: 40px;
+	transition: 0.3s;
+}
+@media screen and (max-width: 1198.5px) {
+	.mnstore{
+		height: 214px;
+	}
+	.card-menu{
+		width: 235px;
+		height: 107px;
+	}
+	.card-menu img{
+		width: 235px;
+	}
+	.card-menu-nen{
+		width: 235px;
+		height: 107px;
+		margin-top: -107px;
+	}
+	.card-menu-txt{
+		width: 235px;
+		height: 107px;
+		font-size: 22px;
+		padding-top: 50px;
+	}
+	.card-menu-gchan1{
+		width: 150px;
+		height: 0.5px;
+	}
+	.card-menu-gchan2{
+		width: 150px;
+		height: 0.5px;
+	}
+}
+@media screen and (max-width: 990px){
+	.mnstore{
+		height: 164px;
+	}
+	.card-menu{
+		width: 180px;
+		height: 82px;
+	}
+	.card-menu img{
+		width: 180px;
+	}
+	.card-menu-nen{
+		width: 180px;
+		height: 82px;
+		margin-top: -82px;
+	}
+	.card-menu-txt{
+		width: 180px;
+		margin-top: -82px;
+		height: 82px;
+		font-size: 17px;
+		padding-top: 20px;
+	}
+	.card-menu-gchan1{
+		width: 140px;
+		height: 0.5px;
+		margin-left: 20px;
+	}
+	.card-menu-gchan2{
+		width: 140px;
+		height: 0.5px;
+		margin-left: 20px;
+	}
+}

@@ -1,0 +1,1 @@
+﻿delete from GioHang where name='khoi1404';

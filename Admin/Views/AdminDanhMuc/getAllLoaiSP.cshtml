@@ -1,0 +1,66 @@
+﻿@model IEnumerable<SaleWebsite.Models.loaisanpham>
+<style>
+    @@keyframes ani4 {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+    .addani4 {
+        display: block;
+        transition: 0.4s;
+        animation: ani4 0.6s forwards;
+    }
+</style>
+
+<table width="100%" style="border: 1px solid #808080;border-collapse: collapse; text-align: center">
+    <tr style="border-bottom: 1px solid #808080; height: 40px; font-size: 17px;">
+        <th style="text-align: center">Mã loại</th>
+        <th style="text-align: center">Tên loại sản phẩm</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr style="height: 50px;">
+            <td><span>@item.maloai</span></td>
+            <td><span>@item.tenloai</span></td>
+            <td>
+                <button class="btn btn-success btneditlsp" id="@item.ToString()">Chỉnh sửa</button>
+            </td>
+            <td>
+                <button class="btn btn-success deletelsp" id="@item.maloai">Xóa</button>
+            </td>
+        </tr>
+    }
+</table>
+<script>
+    $('.btneditlsp').on('click', function () {
+        $('.divedit').addClass('addani4');
+        $('.blblack').addClass('addani2');
+
+        var madm = ($(this).closest('.btneditlsp').prop('id')).split("-");
+        $('#txtIDProdcut').val(madm[0]);
+        $('#txtCTName').val(madm[1]);
+        $('#txtIDCT').val(madm[2]);
+    })
+    $('.deletelsp').on('click', function () {
+        var madm = parseInt($(this).closest('.deletelsp').prop('id'));
+        var tr = $(this).closest("tr");
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json;charset=utf-8',
+            url: 'AdminDanhMuc/DeleteLSP',
+            data: "{'madm':'" + madm + "'}",
+            success: function (data) {
+                tr.remove();
+            },
+            error: function (data) {
+                alert(data);
+            }
+        })
+    })
+</script>

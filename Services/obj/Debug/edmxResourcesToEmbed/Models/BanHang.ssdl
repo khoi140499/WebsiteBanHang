@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="banhangModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ctdonhang">
+    <Key>
+      <PropertyRef Name="mact" />
+    </Key>
+    <Property Name="mact" Type="int" Nullable="false" />
+    <Property Name="madonhang" Type="int" Nullable="false" />
+    <Property Name="masp" Type="int" Nullable="false" />
+    <Property Name="soluong" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="danhgia">
+    <Key>
+      <PropertyRef Name="madanhgia" />
+    </Key>
+    <Property Name="madanhgia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rate" Type="float" Nullable="false" />
+    <Property Name="masp" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="danhmuc">
+    <Key>
+      <PropertyRef Name="madm" />
+    </Key>
+    <Property Name="madm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tendm" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="diachi">
+    <Key>
+      <PropertyRef Name="madiachi" />
+    </Key>
+    <Property Name="madiachi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="diachi" Type="text" Nullable="false" />
+    <Property Name="matv" Type="int" Nullable="false" />
+    <Property Name="loai" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="donhang">
+    <Key>
+      <PropertyRef Name="madonhang" />
+    </Key>
+    <Property Name="madonhang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ngaydat" Type="date" />
+    <Property Name="tinhtrang" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="matv" Type="int" Nullable="false" />
+    <Property Name="ngaygiao" Type="varchar" MaxLength="45" />
+    <Property Name="tongthanhtoan" Type="double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="hinhanh">
+    <Key>
+      <PropertyRef Name="mahinhanh" />
+    </Key>
+    <Property Name="mahinhanh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hinhanh" Type="text" Nullable="false" />
+    <Property Name="masp" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="loaisanpham">
+    <Key>
+      <PropertyRef Name="maloai" />
+    </Key>
+    <Property Name="maloai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenloai" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="madm" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mausac">
+    <Key>
+      <PropertyRef Name="mamau" />
+    </Key>
+    <Property Name="mamau" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenmau" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="masize" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sanpham">
+    <Key>
+      <PropertyRef Name="masp" />
+    </Key>
+    <Property Name="masp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tensp" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="dongia" Type="double" Nullable="false" />
+    <Property Name="ngaycapnhat" Type="date" Nullable="false" />
+    <Property Name="chatlieu" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="mota" Type="text" Nullable="false" />
+    <Property Name="maloai" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="size">
+    <Key>
+      <PropertyRef Name="masize" />
+    </Key>
+    <Property Name="masize" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="size" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="soluong" Type="int" Nullable="false" />
+    <Property Name="masp" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="thanhvien">
+    <Key>
+      <PropertyRef Name="matv" />
+    </Key>
+    <Property Name="matv" Type="int" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fullname" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="bio" Type="text" Nullable="false" />
+    <Property Name="email" Type="text" Nullable="false" />
+    <Property Name="image" Type="text" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="role" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <Association Name="ctdonhang_ibfk_1">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+    <End Role="ctdonhang" Type="Self.ctdonhang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="masp" />
+      </Principal>
+      <Dependent Role="ctdonhang">
+        <PropertyRef Name="masp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="danhgia_ibfk_1">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+    <End Role="danhgia" Type="Self.danhgia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="masp" />
+      </Principal>
+      <Dependent Role="danhgia">
+        <PropertyRef Name="masp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="danhgia_ibfk_2">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+    <End Role="danhgia" Type="Self.danhgia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="masp" />
+      </Principal>
+      <Dependent Role="danhgia">
+        <PropertyRef Name="masp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="donhang_ibfk_1">
+    <End Role="thanhvien" Type="Self.thanhvien" Multiplicity="1" />
+    <End Role="donhang" Type="Self.donhang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="thanhvien">
+        <PropertyRef Name="matv" />
+      </Principal>
+      <Dependent Role="donhang">
+        <PropertyRef Name="matv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="hinhanh_ibfk_1">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+    <End Role="hinhanh" Type="Self.hinhanh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="masp" />
+      </Principal>
+      <Dependent Role="hinhanh">
+        <PropertyRef Name="masp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="madm">
+    <End Role="danhmuc" Type="Self.danhmuc" Multiplicity="1" />
+    <End Role="loaisanpham" Type="Self.loaisanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="danhmuc">
+        <PropertyRef Name="madm" />
+      </Principal>
+      <Dependent Role="loaisanpham">
+        <PropertyRef Name="madm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="madonhang">
+    <End Role="donhang" Type="Self.donhang" Multiplicity="1" />
+    <End Role="ctdonhang" Type="Self.ctdonhang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="donhang">
+        <PropertyRef Name="madonhang" />
+      </Principal>
+      <Dependent Role="ctdonhang">
+        <PropertyRef Name="madonhang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="maloai">
+    <End Role="loaisanpham" Type="Self.loaisanpham" Multiplicity="1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loaisanpham">
+        <PropertyRef Name="maloai" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="maloai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="masize">
+    <End Role="size" Type="Self.size" Multiplicity="1" />
+    <End Role="mausac" Type="Self.mausac" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="size">
+        <PropertyRef Name="masize" />
+      </Principal>
+      <Dependent Role="mausac">
+        <PropertyRef Name="masize" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="masp">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+    <End Role="size" Type="Self.size" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="masp" />
+      </Principal>
+      <Dependent Role="size">
+        <PropertyRef Name="masp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="matv">
+    <End Role="thanhvien" Type="Self.thanhvien" Multiplicity="1" />
+    <End Role="diachi" Type="Self.diachi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="thanhvien">
+        <PropertyRef Name="matv" />
+      </Principal>
+      <Dependent Role="diachi">
+        <PropertyRef Name="matv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="banhangModelStoreContainer">
+    <EntitySet Name="ctdonhang" EntityType="Self.ctdonhang" Schema="banhang" store:Type="Tables" />
+    <EntitySet Name="danhgia" EntityType="Self.danhgia" Schema="banhang" store:Type="Tables" />
+    <EntitySet Name="danhmuc" EntityType="Self.danhmuc" Schema="banhang" store:Type="Tables" />
+    <EntitySet Name="diachi" EntityType="Self.diachi" Schema="banhang" store:Type="Tables" />
+    <EntitySet Name="donhang" EntityType="Self.donhang" Schema="banhang" store:Type="Tables" />
+    <EntitySet Name="hinhanh" EntityType="Self.hinhanh" Schema="banhang" store:Type="Tables" />
+    <EntitySet Name="loaisanpham" EntityType="Self.loaisanpham" Schema="banhang" store:Type="Tables" />
+    <EntitySet Name="mausac" EntityType="Self.mausac" Schema="banhang" store:Type="Tables" />
+    <EntitySet Name="sanpham" EntityType="Self.sanpham" Schema="banhang" store:Type="Tables" />
+    <EntitySet Name="size" EntityType="Self.size" Schema="banhang" store:Type="Tables" />
+    <EntitySet Name="thanhvien" EntityType="Self.thanhvien" Schema="banhang" store:Type="Tables" />
+    <AssociationSet Name="ctdonhang_ibfk_1" Association="Self.ctdonhang_ibfk_1">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="ctdonhang" EntitySet="ctdonhang" />
+    </AssociationSet>
+    <AssociationSet Name="danhgia_ibfk_1" Association="Self.danhgia_ibfk_1">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="danhgia" EntitySet="danhgia" />
+    </AssociationSet>
+    <AssociationSet Name="danhgia_ibfk_2" Association="Self.danhgia_ibfk_2">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="danhgia" EntitySet="danhgia" />
+    </AssociationSet>
+    <AssociationSet Name="donhang_ibfk_1" Association="Self.donhang_ibfk_1">
+      <End Role="thanhvien" EntitySet="thanhvien" />
+      <End Role="donhang" EntitySet="donhang" />
+    </AssociationSet>
+    <AssociationSet Name="hinhanh_ibfk_1" Association="Self.hinhanh_ibfk_1">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="hinhanh" EntitySet="hinhanh" />
+    </AssociationSet>
+    <AssociationSet Name="madm" Association="Self.madm">
+      <End Role="danhmuc" EntitySet="danhmuc" />
+      <End Role="loaisanpham" EntitySet="loaisanpham" />
+    </AssociationSet>
+    <AssociationSet Name="madonhang" Association="Self.madonhang">
+      <End Role="donhang" EntitySet="donhang" />
+      <End Role="ctdonhang" EntitySet="ctdonhang" />
+    </AssociationSet>
+    <AssociationSet Name="maloai" Association="Self.maloai">
+      <End Role="loaisanpham" EntitySet="loaisanpham" />
+      <End Role="sanpham" EntitySet="sanpham" />
+    </AssociationSet>
+    <AssociationSet Name="masize" Association="Self.masize">
+      <End Role="size" EntitySet="size" />
+      <End Role="mausac" EntitySet="mausac" />
+    </AssociationSet>
+    <AssociationSet Name="masp" Association="Self.masp">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="size" EntitySet="size" />
+    </AssociationSet>
+    <AssociationSet Name="matv" Association="Self.matv">
+      <End Role="thanhvien" EntitySet="thanhvien" />
+      <End Role="diachi" EntitySet="diachi" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

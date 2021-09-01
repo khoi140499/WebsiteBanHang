@@ -1,0 +1,91 @@
+﻿@model WebDemo.Models.MultiModel
+@{
+    ViewBag.Title = "ThanhToan";
+}
+<link rel="stylesheet" type="text/css" href="/Content/cart.css">
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+<div class="cartstore" style="background-color: white; height: auto;">
+    <div class="container">
+        <ul class="list-group">
+            <li class="list-group-item cs-li1" style="background-color: white">Giỏ hàng</li>
+            <li class="list-group-item cs-li2 text-center" style="background-color: white;">
+                <div class="col-xs-2 f-s">
+                    <span>Ảnh sản phẩm</span>
+                </div>
+                <div class="col-xs-3 f-s">
+                    <span>Tên sản phẩm</span>
+                </div>
+                <div class="col-xs-2 f-s">
+                    <span>Kích cỡ</span>
+                </div>
+                <div class="col-xs-2 f-s">
+                    <span>Đơn giá</span>
+                </div>
+                <div class="col-xs-2 f-s">
+                    <span>Số lượng</span>
+                </div>
+                <div class="col-xs-1 f-s">
+
+                </div>
+            </li>
+            @{
+                long? tong = 0;
+                long? count = 0;
+                if (Model != null)
+                {
+                    foreach (var it in Model.GHang)
+                    {
+                        foreach (var it1 in Model.SPham)
+                        {
+                            if (it.masp == it1.masp)
+                            {
+                                <p hidden>
+                                    @(tong = (it1.giasp * it.soluong))
+                                    @(count+=tong)
+                                </p>
+                                <li class="list-group-item cs-li3 text-center" style="background-color: white;">
+                                    <div class="col-xs-2" style="border-right: 1px solid #DDDDDD">
+                                        <img src="@it1.anh" align="tt" class="cs-li3-img">
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <span>@it1.tensp</span>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <span>@it1.kichco</span>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <span>@it1.giasp</span>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <span>@it.soluong</span>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        @using (Html.BeginForm("TT", "Home", FormMethod.Get))
+                                        {
+                                            <input type="number" name="magh" value="@it.magh" hidden />
+                                            <input type="submit" class="btn btn-danger" value="Xóa">
+                                        }
+                                    </div>
+                                </li>
+                            }
+                        }
+                    }
+                }
+            }
+            <li class="list-group-item text-right cs-li4" style="background-color: white;">
+                <span>Tổng tiền: </span><b style="color: red">@count đ</b>
+            </li>
+            <li class="list-group-item cs-li5 text-right" style="background-color: white;">
+                <button type="button" class="btn btn-dark">
+                    <a href="@Url.Action("Index", "Home")">Tiếp tục mua hàng</a>
+                </button>
+                <button type="button" class="btn btn-light">
+                    <a href="@Url.Action("DatHang", "Home")">Thanh toán</a>
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>

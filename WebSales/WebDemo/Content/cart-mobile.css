@@ -1,0 +1,151 @@
+@media screen and (max-width: 768px) {
+	body{
+		background: #FBF8F1;
+	}
+	.head{
+		display: none;
+	}
+	.container{
+		width: 500px;
+	}
+	.wrapper{
+		display: none;
+	}
+	.menu-m{
+		display: block;
+		width: 100%;
+		height: 50px;
+		padding-top: 10px;
+	}
+	.menu-m img{
+		width: 70px;
+	}
+	.menunho-m{
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		z-index: 3;
+		margin-top: 30px;
+	}
+	.menu-m{
+		float: left;
+		width: 100%;
+	}
+	.mb{
+		width: 500px;
+	}
+	.mb{
+		height: 30px;
+	}
+	.mn{
+		padding-top: 5px;
+		font-size: 18px;
+	}
+	.mn i{
+	 	cursor: pointer;
+	}
+	 .menunho-m a{
+		text-decoration: none;
+		color: #503123;
+		font-family: 'Courier New';
+	}
+	.fs-m{
+		display: block
+	}
+	.menunho-m a:hover{
+		color: #339AF0;
+	}
+	.hien{
+		display: block;
+		animation: ad 0.5s forwards;
+	}
+	@keyframes ad{
+		0%{
+			transform: scale(0.85);
+		}
+		100%{
+			transform: scale(1);
+		}
+	}
+	.frm-m input[type=text]{
+		height: 25px;
+		padding: 1px;
+		font-size: 8px;
+		margin-top: 5px;
+		width: 260px;
+	}
+	.frm-m input[type=submit]{
+		position: absolute;
+		width: 50px;
+		font-size: 8px;
+		margin-left: 3px;
+		margin-top: 4.3px;
+		height: 25px;
+		padding: 0px;
+		border: 0px;
+		background: #503123;
+		color: white;
+	}
+	.mnstore{
+		display: none;
+	}
+	.fooster{
+		display: none;
+	}
+	.f-s{
+		font-size: 10px;
+	}
+	.cartstore{
+		height: 395px;
+		padding-top: 10px;
+	}
+	.cs-li1{
+		font-size: 20px;
+	}
+	.cs-li3 img{
+		width: 50px;
+	}
+	.cs-li3 span{
+		font-size: 11px;
+	}
+	.cs-li3{
+		height: 100px;
+	}
+	.cs-li3 div{
+		height: 100px;
+	}
+	.cs-li4{
+		font-size: 12px;
+	}
+	.cs-li5 button{
+		font-size: 11px;
+	}
+	.tree-s{
+		font-size: 11px;
+		height: 40px;
+		padding-top: 10px;
+	}
+	.rb{
+		border-bottom: 0.5px solid #DDDDDD;
+	}
+}
+@media screen and (max-width: 530px) {
+	.main{
+		width: 530px;
+	}
+	.fs-m{
+		display: none;
+	}
+	.fooster{
+		display: none;
+	}
+	.nenfooster-m{
+		width: 530px;
+	}
+	.cartstore ul li{
+		background: #FBF8F1;
+	}
+	.menu-m{
+		background: #FBF8F1;
+	}
+}

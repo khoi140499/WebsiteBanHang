@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WebDemo.Models.CompareProduct>
+<link rel="stylesheet" type="text/css" href="/Content/pay.css">
+<style>
+    .gia_sanpham a{
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+@foreach (var item in Model)
+{
+    <li class="list-group-item li_ttdonhang" style="background-color: white;">
+        <div class="img_sanpham">
+            <img src="@item.sanpham.anh">
+        </div>
+        <div class="tt_sanpham">
+            <span>@item.sanpham.tensp</span><br />
+            <span>Size: @item.sanpham.kichco</span>
+        </div>
+        <div class="gia_sanpham">
+            <a class="btn btn-danger" href="@Url.Action("CompareProduct", "Home", new {masp1=item.masp, masp2=item.sanpham.masp})">
+                So sánh
+            </a>
+        </div>
+    </li>
+}
+

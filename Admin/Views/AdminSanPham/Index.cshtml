@@ -1,0 +1,618 @@
+﻿@model IEnumerable<SaleWebsite.Models.sanpham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminPage.cshtml";
+}
+<link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+    .divql {
+        width: 100%;
+        height: 800px;
+    }
+    .divsp {
+        float: left;
+        width: 100%;
+        height: 500px;
+    }
+    .divsp_main{
+        width: 100%;
+        height: 300px;
+        float: left;
+    }
+    .divsize {
+        float: left;
+        width: 32%;
+        height: 270px;
+        background: white;
+        overflow-y: auto;
+        box-sizing: border-box;
+        box-shadow: 0 0 9px 3px #00000096;
+        margin-right: 20px;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    .divimg {
+        float: left;
+        width: 32%;
+        height: 270px;
+        background: white;
+        box-sizing: border-box;
+        box-shadow: 0 0 9px 3px #00000096;
+        border-radius: 10px;
+        border: 10px;
+        margin-right: 20px;
+    }
+    .divcolor {
+        float: left;
+        width: 32%;
+        height: 270px;
+        background: white;
+        box-sizing: border-box;
+        box-shadow: 0 0 9px 3px #00000096;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    .divsp_header{
+        width: 100%;
+        height: 60px;
+        float: left;
+        margin-bottom: 30px;
+    }
+    .divsp_header div{
+        float: left;
+    }
+    .btnadd{
+        float: right;
+        height: 40px;
+        line-height: 17px;
+        border-radius: 5px;
+        margin-top: 15px;
+    }
+    .divsp_main{
+        width: 100%;
+        height: 100%;
+    }
+    .tblsp, .tblsize, .tblcl{
+        width: 100%;
+        border-collapse: collapse;
+        overflow-y: auto;
+    }
+    .tblsp th, .tblsize th, .tblcl th{
+        font-size: 14px;
+        text-align: center;
+    }
+    .btnedit {
+        background: #F6F7FB;
+        height: 20px;
+        font-size: 13px;
+        border-radius: 5px;
+        margin-left: -7px;
+        margin-top: 5px;
+        border: 0px;
+    }
+    .btndelete, .btnview {
+        background: #F6F7FB;
+        height: 20px;
+        font-size: 13px;
+        border-radius: 5px;
+        border: 0px;
+        margin-top: 5px;
+    }
+    .dl, .ey, .ed {
+        margin-top: -5px;
+        position: absolute;
+        margin-left: -6px;
+        color: #009A82;
+    }
+    .dl:hover, .ey:hover, .ed:hover{
+        color: #ff6a00;
+    }
+    .sp {
+        cursor: pointer;
+    }
+    .btedit, .btdelete {
+        background: white;
+        border: 0px;
+        color: #009A82;
+    }
+    .btedit:hover, .btdelete:hover{
+        color: #ff6a00;
+    }
+    .btnedit1, .btndelete1, .btnview1 {
+        border: 0px;
+        background: white;
+        color: #009A82;
+    }
+
+    .btnedit1:hover, .btndelete1:hover, .btnview1:hover {
+        color: #ff6a00;
+    }
+    .divadd {
+        position: absolute;
+        width: 500px;
+        height: 600px;
+        background: white;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 105;
+        display: none;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .diveditsp {
+        width: 500px;
+        height: 600px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        display: none;
+        z-index: 103;
+    }
+    .diveditsize, .diveditcolor {
+        width: 500px;
+        height: 500px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        display: none;
+        z-index: 103;
+    }
+    @@keyframes ani4 {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @@keyframes ani5 {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0.5;
+        }
+    }
+
+    .addani {
+        display: block;
+        transition: 0.4s;
+        animation: ani4 0.6s forwards;
+    }
+
+    .addani2 {
+        display: block;
+        transition: 0.4s;
+        animation: ani5 0.6s forwards;
+    }
+
+    .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+    }
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+     }
+    .tab button:hover {
+        background-color: #ddd;
+     }
+    .tab button.active {
+        background-color: #ccc;
+     }
+    .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+    .edit_header{
+        width: 100%;
+        height: 50px;
+        padding-left: 20px;
+        float: left;
+        margin-bottom: 10px;
+    }
+    .edit_main{
+        float: left;
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+</style>
+
+<div class="divadd">
+    <h3 style="width: 100%; height: 35px; padding-left: 20px; padding-top: 10px;">Thêm sản phẩm</h3>
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'idsp')">Sản phẩm</button>
+        <button class="tablinks" onclick="openCity(event, 'idsize')">Size</button>
+        <button class="tablinks" onclick="openCity(event, 'idimage')">Hình ảnh</button>
+        <button class="tablinks" onclick="openCity(event, 'idcolor')">Màu áo</button>
+    </div>
+    <div id="idsp" class="tabcontent">
+
+        <label for="txtName">Enter name product</label>
+        <input type="text" name="txtName" class="form-control" id="NameSP" />
+        <label for="txtCost">Enter cost</label>
+        <input type="text" name="txtCost" class="form-control" id="cost" />
+        <label for="txtCL">Enter fabric</label>
+        <input type="text" name="txtCL" class="form-control" id="CL" />
+        <label for="txtMoTa">Enter bio</label>
+        <input type="text" name="txtMota" class="form-control" id="MoTa" />
+        <label for="txtID">Enter product category</label>
+        <div class="sltID">
+
+        </div>
+        <button class="btn btn-danger btnproduct" style="margin-top: 10px;">Thêm sản phẩm</button>
+    </div>
+
+    <div id="idsize" class="tabcontent">
+        <label for="txtSize">Enter size</label>
+        <input type="text" name="txtSize" class="form-control" id="NameSize" />
+        <label for="txtCost">Enter quantity</label>
+        <input type="text" name="txtSL" class="form-control" id="SL" />
+        <label for="txtCL">Enter product</label>
+        <select style="width: 100%; height: 35px; border: 0.5px solid #CCCCCC; border-radius: 3px;" id="spsize">
+            @{ 
+                foreach(var item in Model)
+            {
+                <option>@item.ToString()</option>
+            }
+            }
+        </select>
+        <button class="btn btn-danger btnsize" style="margin-top: 10px;">Thêm size</button>
+    </div>
+
+    <div id="idimage" class="tabcontent">
+        <label for="txtCost">Uoload images (max: 5images)</label>
+        <input type="file" multiple name="uploadimages" class="form-control" id="upload" /><br />
+        <label for="txtCL">Enter product</label>
+        <select style="width: 100%; height: 35px; border: 0.5px solid #CCCCCC; border-radius: 3px;" id="spimage">
+            @{
+                foreach (var item in Model)
+                {
+                    <option>@item.ToString()</option>
+                }
+            }
+        </select>
+        <button class="btn btn-danger btnimages" style="margin-top: 10px;">Thêm hình ảnh</button>
+    </div>
+    <div id="idcolor" class="tabcontent">
+        <label for="txtSize">Enter color product</label>
+        <input type="text" name="txtColorProduct" class="form-control" id="colorproduct" />
+        <label for="txtCL">Enter product</label>
+        <div>
+            <select style="width: 80%; height: 35px; border: 0.5px solid #CCCCCC; border-radius: 3px;" id="spcl">
+                @{
+                    foreach (var item in Model)
+                    {
+                        <option>@item.ToString()</option>
+                    }
+                }
+            </select>
+            <button class="spcolor btn" style="width: 18%; height: 35px;line-height: 10px;">Chọn</button>
+        </div>
+        <label>Enter size</label>
+        <div class="sltsize">
+
+        </div>
+        <button class="btn btn-danger btnimages" style="margin-top: 10px;">Thêm màu</button>
+    </div>
+</div>
+
+
+<div class="diveditsp">
+    <div class="edit_header">
+        <h3>Chỉnh sửa sản phẩm</h3>
+    </div>
+    <div class="edit_main">
+        <label>ID product</label>
+        <input type="text" class="form-control" id="editID" readonly />
+        <label>Name product</label>
+        <input type="text" class="form-control" id="editName" />
+        <label>Cost</label>
+        <input type="text" class="form-control" id="editCost" />
+        <label>Fabric</label>
+        <input type="text" class="form-control" id="editChatLieu" />
+        <label>Bio</label>
+        <input type="text" class="form-control" id="editMoTa" />
+        <label>Date create</label>
+        <input type="text" class="form-control" id="editDate" readonly/>
+        <label>Product category</label>
+        <div class="sltedit">
+
+        </div>
+        <button class="btn btn-danger editbtn" style="margin-top: 10px;">Hoàn tất</button>
+    </div>
+</div>
+
+<div class="diveditsize">
+    <div class="edit_header">
+        <h3>Chỉnh sửa size</h3>
+    </div>
+    <div class="edit_main">
+        <label>ID product</label>
+        <input type="text" class="form-control" id="editidsize" readonly />
+        <label>Size</label>
+        <input type="text" class="form-control" id="editsize" />
+        <label>Quanity</label>
+        <input type="number" class="form-control" id="editquantity" />
+        <label>Fabric</label>
+        <input type="text" class="form-control" id="editmasp" readonly/>
+        <button class="btn btn-danger btnsmsize" style="margin-top: 10px;">Hoàn tất</button>
+    </div>
+</div>
+
+
+<div class="diveditcolor">
+    <div class="edit_header">
+        <h3>Chỉnh sửa màu sắc</h3>
+    </div>
+    <div class="edit_main">
+        <label>ID color</label>
+        <input type="text" class="form-control" id="edid" readonly />
+        <label>Color</label>
+        <input type="text" class="form-control" id="edcolor" />
+        <label>ID Size</label>
+        <input type="number" class="form-control" id="edidsize" readonly/>
+        <button class="btn btn-danger btnedcolor" style="margin-top: 10px;">Hoàn tất</button>
+    </div>
+</div>
+
+<div class="divql">
+    <div class="divsp">
+        <div class="divsp_header">
+            <div>
+                <h3>Quản lý sản phẩm </h3>
+            </div>
+            <button class="btn btn-danger btnadd">Thêm mới</button>
+        </div>
+        <div class="divsp_main">
+            <table class="tblsp">
+                <tr style="border: 1px solid #8B4730; ">
+                    <th style="width: 3%;">Mã SP</th>
+                    <th style="width: 20%;">Tên sản phẩm</th>
+                    <th style="width: 5%;">Đơn giá</th>
+                    <th style="width: 5%;">Chất liệu</th>
+                    <th style="width: 48%;">Mô tả</th>
+                    <th style="width: 5%;">Ngày đăng</th>
+                    <th style="width: 5%;">Loại sản phẩm</th>
+                    <th style="width: 5%;">Danh mục</th>
+                    <th style="width: 2%;"></th>
+                    <th style="width: 2%;"></th>
+                    <th style="width: 2%;"></th>
+                </tr>
+                @foreach(var item in Model) { 
+                    <tr style="text-align: center;" class="sp" id="@item.masp">
+                        <td style="width: 3%;">@item.masp</td>
+                        <td style="width: 20%;">@item.tensp</td>
+                        <td style="width: 5%;">@item.dongia</td>
+                        <td style="width: 5%;">@item.chatlieu</td>
+                        <td style="width: 42%;">@item.mota</td>
+                        <td style="width: 5%;">@item.ngaycapnhat</td>
+                        <td style="width: 5%;">@item.loaisanpham.tenloai</td>
+                        <td style="width: 5%;">@item.loaisanpham.danhmuc.tendm</td>
+                        <td style="width: 2%;">
+                            <button class="btnview" id="@item.masp">
+                                <i class="fas fa-eye ey"></i>
+                            </button>
+                        </td>
+                        <td style="width: 2%;">
+                            <button class="btnedit">
+                                <span hidden id="getall">@item.GetAll()</span>
+                                <i class="fas fa-edit ed"></i>
+                            </button>
+                        </td>
+                        <td style="width: 2%;">
+                            <button class="btndelete" id="@item.masp">
+                                <i class="fas fa-trash-alt dl"></i>
+                            </button>
+                        </td>
+                     </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="divsize">
+        
+    </div>
+    <div class="divimg">
+
+    </div>
+    <div class="divcolor">
+        
+    </div>
+</div>
+
+<script>
+    function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    $(document).ready(function () {
+        //add button
+        $('.btnadd').on('click', function () {
+            $('.divadd').addClass('addani');
+            $('.blblack').addClass('addani2');
+
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=ut-8',
+                url: 'AdminSanPham/getAllLSP',
+                data: {},
+                success: function (data) {
+                    $('.sltID').html(data);
+                }
+            })
+        })
+        //black
+        $('.blblack').on('click', function () {
+            $('.divadd').removeClass('addani');
+            $('.blblack').removeClass('addani2');
+            $('.diveditsp').removeClass('addani');
+            $('.diveditsize').removeClass('addani');
+            $('.diveditcolor').removeClass('addani');
+        })
+        //edit button
+        $('.btnedit').on('click', function () {
+            $('.blblack').addClass('addani2');
+            $('.diveditsp').addClass('addani');
+
+            var sanpham = ($('#getall').text()).split("-");
+            $('#editID').val(sanpham[0]);
+            $('#editName').val(sanpham[1]);
+            $('#editCost').val(sanpham[2]);
+            $('#editChatLieu').val(sanpham[3]);
+            $('#editMoTa').val(sanpham[4]);
+            $('#editDate').val(sanpham[5]);
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: 'AdminSanPham/getLSP',
+                data: {},
+                success: function (data) {
+                    $('.sltedit').html(data);
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        })
+        //delete button
+        $('.btndelete').on('click', function () {
+            var msp = parseInt($(this).closest('.btndelete').prop('id'));
+            var row = $(this).closest('tr');
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: 'AdminSanPham/DeleteSP',
+                data: "{'masp':'" + msp + "'}",
+                success: function (data) {
+                    row.remove();
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        })
+        //view button
+        $('.btnview').on('click', function () {
+            var masp = parseInt($(this).closest('.btnview').prop('id'));
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: 'AdminSanPham/ViewAll',
+                data: "{'masp':'" + masp + "'}",
+                success: function (data) {
+                    $('.divsize').html(data);
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        })
+        //function 
+        $('.spcolor').on('click',function () {
+            var sanpham = ($('#spcl option:selected').val()).split("-");
+            var masp = parseInt(sanpham[0]);
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: 'AdminSanPham/getAllSize',
+                data: "{'masp':'" + masp + "'}",
+                success: function (data) {
+                    $('.sltsize').html(data);
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        })
+        //submit edit san pham
+        $('.editbtn').on('click', function () {
+            var masp = ($('#editID').val());
+            var tensp = ($('#editName').val());
+            var dongia = parseInt($('#editCost').val());
+            var chatlieu = ($('#editChatLieu').val());
+            var bio = ($('#editMoTa').val());
+            var date = $('#editDate').val();
+            var lsp = ($('.sltedit option:selected').val()).split("-");
+            var malsp = parseInt(lsp[0]);
+            var object = {
+                masp: masp,
+                tensp: tensp,
+                dongia: dongia,
+                chatlieu: chatlieu,
+                bio: bio,
+                date: date,
+                lsp: malsp
+            }
+
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: 'AdminSanPham/EditSP',
+                data: object,
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        })
+        //submit edit sizes
+        $('.btnsmsize').on('click', function () {
+            var masize = parseInt($('#editidsize').val());
+            var tensize = $('#editsize').val();
+            var soluong = parseInt($('#editquantity').val());
+            var masp = parseInt($('#editmasp').val());
+
+            var object = {
+                masize: masize,
+                tensize: tensize,
+                soluong: soluong,
+                masp: masp
+            }
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: 'AdminSanPham/EditSize',
+                data: JSON.stringify(object),
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        })
+    })
+</script>

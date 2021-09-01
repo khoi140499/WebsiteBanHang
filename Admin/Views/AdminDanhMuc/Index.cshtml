@@ -1,0 +1,417 @@
+﻿@model IEnumerable<SaleWebsite.Models.danhmuc>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminPage.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="/Content/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+<style>
+    @@keyframes anima {
+        0% {
+            transform: translateY(0px);
+        }
+
+        100% {
+            transform: translateY(450px);
+        }
+    }
+
+    .adds {
+        animation: anima 1s forwards;
+    }
+
+    .backgroundwhite {
+        width: 100%;
+        height: 450px;
+        background: #F6F7FB;
+        margin-top: -450px;
+        transition: 0.4s;
+    }
+
+    .loaisp {
+        background: #F6F7FB;
+        width: 100%;
+        height: 450px;
+        overflow-y: auto;
+    }
+
+    .viewloaisp {
+        background: #F6F7FB;
+        height: 450px;
+        margin-top: 20px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .btn1ani {
+        transition: 0.4s;
+        animation: ani2 1s forwards;
+    }
+
+    @@keyframes ani2 {
+        0% {
+            transform: translateY(0px);
+        }
+
+        100% {
+            transform: translateY(400px);
+        }
+    }
+
+    .mainbtn1 {
+        width: 100%;
+        height: 400px;
+        background: white;
+        margin-top: -400px;
+    }
+
+    .mainbtn2 {
+        width: 100%;
+        height: 400px;
+        background: white;
+        margin-top: -400px;
+    }
+
+    .btn1 {
+        width: 50%;
+        float: left;
+    }
+
+    .btn2 {
+        width: 50%;
+        float: left
+    }
+
+    .add_dm_lsp {
+        width: 500px;
+        height: 600px;
+        position: absolute;
+        background: white;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 103;
+        display: none;
+    }
+
+    #header_h3 {
+        margin: 20px;
+        width: 100%;
+    }
+
+    .body_dm {
+        width: 100%;
+        height: 400px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .ch_dm {
+        width: 100%;
+        height: 40px;
+    }
+    .frm_adddm{
+        height: 200px;
+        width: 80%;
+        padding-left: 10%;
+        padding-top: 50px;
+    }
+    .btnadd, .btneditdm, .btneditlsp {
+        margin-top: 10px;
+    }
+    .add-select-dm ,.slt_editdm{
+        width: 100%;
+        height: 33px;
+        border-radius: 3px;
+        border: 1px solid #CCCCCC;
+    }
+    @@keyframes ani4{
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
+    @@keyframes ani5 {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0.5;
+        }
+    }
+    .addani {
+        display: block;
+        transition: 0.4s;
+        animation: ani4 0.6s forwards;
+    }
+    .addani2{
+        display: block;
+        transition: 0.4s;
+        animation: ani5 0.6s forwards;
+    }
+    .add_lsp{
+        width: 500px;
+        height: 600px;
+        position: absolute;
+        background: white;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 104;
+        display: none;
+    }
+    .addani4 {
+        display: block;
+        transition: 0.4s;
+        animation: ani4 0.6s forwards;
+    }
+    .divedit {
+        position: absolute;
+        width: 500px;
+        height: 600px;
+        background: white;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 105;
+        display: none;
+    }
+</style>
+
+<div class="add_dm_lsp">
+    <h3 id="header_h3">Thêm mới</h3>
+    <div class="ch_dm">
+        <button class="btn btn1">Danh mục</button>
+        <button class="btn btn2">Loại sản phẩm</button>
+    </div>
+    <div class="body_dm">
+        <div class="mainbtn1">
+            <div class="frm_adddm">
+                <label for="txtTenDM">Name category</label>
+                <input type="text" name="txtTenDM" placeholder="Enter name category" class="form-control" id="namecategory"/>
+                <input type="submit" name="submit" value="Thêm danh mục" class="btn btn-danger btnadd"/>
+            </div>
+        </div>
+        <div class="mainbtn2">
+            <div class="frm_adddm">
+                <label for="txtTenLSP">Tên loại sản phẩm</label>
+                <input type="text" name="txtTenLSP" placeholder="Enter name product category" class="form-control" id="name_product_category" />
+                <label for="selectdm">Loại danh mục</label><br />
+                <select name="selectdm" class="add-select-dm">
+                    @foreach(var it in Model) { 
+                        <option>
+                            <span id="madm">@it.madm - </span><span>@it.tendm</span>
+                        </option>
+                    }
+                </select>
+                <br />
+                <input type="submit" name="submit" value="Thêm loại sản phẩm" class="btn btn-danger btnaddlsp" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="add_lsp">
+    <h3 id="header_h3">Chỉnh sửa danh mục</h3>
+    <div class="body_dm">
+        <div class="frm_adddm">
+            <label for="txtTenDM">ID category</label>
+            <input type="text" name="txtID" placeholder="Enter name category" class="form-control" id="txtID" readonly/>
+            <label for="txtTenDM">Name category</label>
+            <input type="text" name="txtTenDM" placeholder="Enter name category" class="form-control" id="txtCT" />
+            <input type="submit" name="submit" value="Hoàn tất" class="btn btn-danger btneditdm" />
+        </div>
+    </div>
+</div>
+
+<div class="divedit">
+    <h3 id="header_h3">Chỉnh sửa loại sản phẩm</h3>
+    <div class="body_dm">
+        <div class="frm_adddm">
+            <label for="txtTenDM">ID category product</label>
+            <input type="text" name="txtID" placeholder="Enter name category" class="form-control" id="txtIDProdcut" readonly />
+            <label for="txtTenDM">Name category product</label>
+            <input type="text" name="txtTenDM" placeholder="Enter name category" class="form-control" id="txtCTName" />
+            <label for="txtTenDM">ID category </label>
+            <input type="text" name="txtTenDM" placeholder="Enter name category" class="form-control" id="txtIDCT" readonly/>
+            <input type="submit" name="submit" value="Hoàn tất" class="btn btn-danger btneditlsp" />
+        </div>
+    </div>
+</div>
+
+<div style="width: 100%; height: 60px;">
+    <h3 style="float: left;">Quản lý danh mục</h3>
+    <button class="btn btn-danger adddm" style="float: right; margin-top: 15px">Thêm mới</button>
+</div>
+<div class="container">
+    <table width="100%" style="border: 1px solid #808080;border-collapse: collapse; text-align: center" class="allsp">
+        <tr style="border-bottom: 1px solid #808080; height: 40px; font-size: 17px;">
+            <th style="text-align: center">Mã danh mục</th>
+            <th style="text-align: center">Tên danh mục</th>
+            <th style="text-align: center">Loại sản phẩm</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr style="height: 50px;" id="@item.madm">
+                <td><span>@item.madm</span></td>
+                <td><span>@item.tendm</span></td>
+                <td>
+                    <button class="btn btn-success viewlsp" id="@item.madm">Xem loại sản phẩm</button>
+                </td>
+                <td>
+                    <button class="btn btn-success editdm" id="@item.ToString()">Chỉnh sửa</button>
+                </td>
+                <td>
+                    <button class="btn btn-success deletedm" id="@item.madm">Xóa</button>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<div class="container viewloaisp">
+    <div class="loaisp">
+
+    </div>
+    <div class="backgroundwhite">
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        //add
+        $('.adddm').on('click', function () {
+            $('.add_dm_lsp').addClass('addani');
+            $('.blblack').addClass('addani2');
+        })
+        //remove add
+        $('.blblack').on('click', function () {
+            $('.add_lsp').removeClass('addani4');
+            $('.divedit').removeClass('addani4');
+            $('.add_dm_lsp').removeClass('addani');
+            $('.blblack').removeClass('addani2');
+        })
+        //view loai san pham
+        $('.viewlsp').on('click', function () {
+            var madm = parseInt($(this).closest('.viewlsp').prop('id'));
+            $('.backgroundwhite').addClass('adds');
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: 'AdminDanhMuc/getAllLoaiSP',
+                data: "{'madm':'" + madm + "'}",
+                success: function (data) {
+                    $('.loaisp').html(data);
+                }
+            })
+        })
+        //edit danh muc
+        $('.editdm').on('click', function () {
+            $('.add_lsp').addClass('addani4');
+            $('.blblack').addClass('addani2');
+            var madm = ($(this).closest('.editdm').prop('id')).split("-");
+            $('#txtID').val(madm[0]);
+            $('#txtCT').val(madm[1]);
+        })
+        //delete danh muc
+        $('.deletedm').on('click', function () {
+            var madm = parseInt($(this).closest('.deletedm').prop('id'));
+            var tr = $(this).closest("tr");
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: 'AdminDanhMuc/DeleteDM',
+                data: "{'madm':'" + madm + "'}",
+                success: function (data) {
+                    tr.remove();
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        })
+        //add danh muc(view)
+        $('.btn1').on('click', function () {
+            $('.mainbtn2').removeClass('btn1ani');
+            $('.mainbtn1').addClass('btn1ani');
+        })
+        //add loaisanpham (view)
+        $('.btn2').on('click', function () {
+            $('.mainbtn1').removeClass('btn1ani');
+            $('.mainbtn2').addClass('btn1ani');
+        })
+        //add danh muc
+        $('.btnadd').on('click', function () {
+            var tendm = $('#namecategory').val();
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: 'AdminDanhMuc/AddDM',
+                data: "{'tendm':'" + tendm + "'}",
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        })
+        //add product category
+        $('.btnaddlsp').on('click', function () {
+            var tenlsp = $('#name_product_category').val();
+            var masp = ($('.add-select-dm option:selected').val()).split("-");
+            var lsp = tenlsp + "+" + masp[0];
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: 'AdminDanhMuc/AddLSP',
+                data: "{'loaisanpham':'" + lsp + "'}",
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        })
+        //button submit edit category
+        $('.btneditdm').on('click', function () {
+            var danhmuc = $('#txtID').val() + "-" + $('#txtCT').val();
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: 'AdminDanhMuc/EditDM',
+                data: "{'danhmuc':'" + danhmuc + "'}",
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        })
+        //button edit product category
+        $('.btneditlsp').on('click', function () {
+            var lsp = $('#txtIDProdcut').val() + "-" + $('#txtCTName').val() + "-" + $('#txtIDCT').val();
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: 'AdminDanhMuc/EditLSP',
+                data: "{'loaisp':'" + lsp + "'}",
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        })
+    })
+</script>

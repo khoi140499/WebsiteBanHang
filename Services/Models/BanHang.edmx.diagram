@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3a2756a4eed545e1be9e4742454dd9af" Name="Diagram1">
+        <EntityTypeShape EntityType="banhangModel.ctdonhang" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangModel.danhgia" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangModel.danhmuc" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangModel.diachi" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangModel.donhang" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangModel.hinhanh" Width="1.5" PointX="7.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangModel.loaisanpham" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangModel.mausac" Width="1.5" PointX="9.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangModel.sanpham" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangModel.size" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangModel.thanhvien" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <AssociationConnector Association="banhangModel.ctdonhang_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangModel.madonhang" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangModel.danhgia_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangModel.madm" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangModel.matv" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangModel.donhang_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangModel.hinhanh_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangModel.maloai" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangModel.masize" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangModel.masp" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,57 @@
+﻿@model SaleWebsite.Models.size
+
+<table class="tblcl">
+    <tr style="border: 1px solid #8B4730; ">
+        <th style="width: 40%;">Mã màu</th>
+        <th style="width: 40%;">Màu</th>
+        <th style="width: 10%;"></th>
+        <th style="width: 10%;"></th>
+    </tr>
+    @{ 
+        foreach(var it in Model.mausacs) { 
+        <tr style="text-align: center;height: 25px; font-size: 12px;">
+            <td>@it.mamau</td>
+            <td>@it.tenmau</td>
+            <td>
+                <button class="btedit">
+                    <span hidden>@it.ToString()</span>
+                    <i class="fas fa-edit"></i>
+                </button>
+            </td>
+            <td>
+                <button class="btdelete" id="@it.mamau">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+        }
+    }
+</table>
+
+<script>
+    $('.btdelete').on('click', function () {
+        var mamau = parseInt($(this).closest('.btndelete').prop('id'));
+        var row = $(this).closest('tr');
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json;charset=utf-8',
+            url: 'AdminSanPham/DeleteColor',
+            data: "{'mamau':" + mamau + "'}",
+            success: function (data) {
+                row.remove();
+            },
+            error: function (data) {
+                alert(data);
+            }
+        })
+    })
+
+    $('.btedit').on('click', function () {
+        $('.diveditcolor').addClass('addani');
+        $('.blblack').addClass('addani2');
+        var ms = ($(this).text()).split("-");
+        $('#edid').val(parseInt(ms[0]));
+        $('#edcolor').val(ms[1]);
+        $('#edidsize').val(parseInt(ms[2]));
+    })
+</script>

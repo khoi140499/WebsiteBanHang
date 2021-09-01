@@ -1,0 +1,31 @@
+/*tre---------*/
+.tree-s{
+	width: 100%;
+	float: left;
+	height: 30px;
+	padding-top: 5px;
+	background: #FBF8F1;
+}
+.tree-s a{
+	text-decoration: none;
+	color: #222222;
+}
+.tree-s a:hover{
+	color: blue;
+}
+.tr-s1{
+	float: left;
+	width: 80px;
+}
+.tr-s2{
+	float: left;
+	width: 20px;
+}
+.tr-s3{
+	float: left;
+	width: 90px;
+}
+.tr-s4{
+	float: left;
+	width: 130px;
+}

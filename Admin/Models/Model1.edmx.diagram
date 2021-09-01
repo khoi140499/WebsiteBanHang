@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d09fe44adc564fcdaf9f9bb837715e46" Name="Diagram1">
+        <EntityTypeShape EntityType="BanHang.ctdonhang" Width="1.5" PointX="7.125" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHang.danhgia" Width="1.5" PointX="9.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHang.danhmuc" Width="1.5" PointX="2.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHang.diachi" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHang.donhang" Width="1.5" PointX="4.875" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHang.hinhanh" Width="1.5" PointX="9.125" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHang.loaisanpham" Width="1.5" PointX="4.625" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHang.mausac" Width="1.5" PointX="9.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHang.sanpham" Width="1.5" PointX="6.375" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHang.size" Width="1.5" PointX="7.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHang.thanhvien" Width="1.5" PointX="1.375" PointY="8.875" IsExpanded="true" />
+        <AssociationConnector Association="BanHang.ctdonhang_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHang.madonhang" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHang.danhgia_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHang.madm" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHang.matv" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHang.donhang_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHang.hinhanh_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHang.maloai" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHang.masize" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHang.masp" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

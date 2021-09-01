@@ -1,0 +1,8 @@
+﻿@model IEnumerable<SaleWebsite.Models.loaisanpham>
+<select style="width: 100%; height: 35px; border-radius: 3px; border: 0.5px solid #CCCCCC;">
+@{ 
+    foreach(var item in Model) { 
+    <option>@item.ToString()</option>
+    }
+}
+</select>

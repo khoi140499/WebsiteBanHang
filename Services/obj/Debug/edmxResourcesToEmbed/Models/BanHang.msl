@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="banhangModelStoreContainer" CdmEntityContainer="banhangEntities">
+    <EntitySetMapping Name="ctdonhangs">
+      <EntityTypeMapping TypeName="banhangModel.ctdonhang">
+        <MappingFragment StoreEntitySet="ctdonhang">
+          <ScalarProperty Name="mact" ColumnName="mact" />
+          <ScalarProperty Name="madonhang" ColumnName="madonhang" />
+          <ScalarProperty Name="masp" ColumnName="masp" />
+          <ScalarProperty Name="soluong" ColumnName="soluong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="danhgias">
+      <EntityTypeMapping TypeName="banhangModel.danhgia">
+        <MappingFragment StoreEntitySet="danhgia">
+          <ScalarProperty Name="madanhgia" ColumnName="madanhgia" />
+          <ScalarProperty Name="rate" ColumnName="rate" />
+          <ScalarProperty Name="masp" ColumnName="masp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="danhmucs">
+      <EntityTypeMapping TypeName="banhangModel.danhmuc">
+        <MappingFragment StoreEntitySet="danhmuc">
+          <ScalarProperty Name="madm" ColumnName="madm" />
+          <ScalarProperty Name="tendm" ColumnName="tendm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="diachis">
+      <EntityTypeMapping TypeName="banhangModel.diachi">
+        <MappingFragment StoreEntitySet="diachi">
+          <ScalarProperty Name="madiachi" ColumnName="madiachi" />
+          <ScalarProperty Name="diachi1" ColumnName="diachi" />
+          <ScalarProperty Name="matv" ColumnName="matv" />
+          <ScalarProperty Name="loai" ColumnName="loai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="donhangs">
+      <EntityTypeMapping TypeName="banhangModel.donhang">
+        <MappingFragment StoreEntitySet="donhang">
+          <ScalarProperty Name="madonhang" ColumnName="madonhang" />
+          <ScalarProperty Name="ngaydat" ColumnName="ngaydat" />
+          <ScalarProperty Name="tinhtrang" ColumnName="tinhtrang" />
+          <ScalarProperty Name="matv" ColumnName="matv" />
+          <ScalarProperty Name="ngaygiao" ColumnName="ngaygiao" />
+          <ScalarProperty Name="tongthanhtoan" ColumnName="tongthanhtoan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hinhanhs">
+      <EntityTypeMapping TypeName="banhangModel.hinhanh">
+        <MappingFragment StoreEntitySet="hinhanh">
+          <ScalarProperty Name="mahinhanh" ColumnName="mahinhanh" />
+          <ScalarProperty Name="hinhanh1" ColumnName="hinhanh" />
+          <ScalarProperty Name="masp" ColumnName="masp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loaisanphams">
+      <EntityTypeMapping TypeName="banhangModel.loaisanpham">
+        <MappingFragment StoreEntitySet="loaisanpham">
+          <ScalarProperty Name="maloai" ColumnName="maloai" />
+          <ScalarProperty Name="tenloai" ColumnName="tenloai" />
+          <ScalarProperty Name="madm" ColumnName="madm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mausacs">
+      <EntityTypeMapping TypeName="banhangModel.mausac">
+        <MappingFragment StoreEntitySet="mausac">
+          <ScalarProperty Name="mamau" ColumnName="mamau" />
+          <ScalarProperty Name="tenmau" ColumnName="tenmau" />
+          <ScalarProperty Name="masize" ColumnName="masize" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sanphams">
+      <EntityTypeMapping TypeName="banhangModel.sanpham">
+        <MappingFragment StoreEntitySet="sanpham">
+          <ScalarProperty Name="masp" ColumnName="masp" />
+          <ScalarProperty Name="tensp" ColumnName="tensp" />
+          <ScalarProperty Name="dongia" ColumnName="dongia" />
+          <ScalarProperty Name="ngaycapnhat" ColumnName="ngaycapnhat" />
+          <ScalarProperty Name="chatlieu" ColumnName="chatlieu" />
+          <ScalarProperty Name="mota" ColumnName="mota" />
+          <ScalarProperty Name="maloai" ColumnName="maloai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sizes">
+      <EntityTypeMapping TypeName="banhangModel.size">
+        <MappingFragment StoreEntitySet="size">
+          <ScalarProperty Name="masize" ColumnName="masize" />
+          <ScalarProperty Name="size1" ColumnName="size" />
+          <ScalarProperty Name="soluong" ColumnName="soluong" />
+          <ScalarProperty Name="masp" ColumnName="masp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="thanhviens">
+      <EntityTypeMapping TypeName="banhangModel.thanhvien">
+        <MappingFragment StoreEntitySet="thanhvien">
+          <ScalarProperty Name="matv" ColumnName="matv" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="bio" ColumnName="bio" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

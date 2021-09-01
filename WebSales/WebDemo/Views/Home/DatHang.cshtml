@@ -1,0 +1,97 @@
+﻿@model IEnumerable<WebDemo.Models.ThanhToan>
+
+@{
+    ViewBag.Title = "DatHang";
+}
+
+<link rel="stylesheet" type="text/css" href="/Content/pay.css">
+<style>
+    body {
+        background-color: white;
+    }
+</style>
+<div class="paystr" style="background-color: white;height: auto">
+    <div class="container" style="background-color: white;">
+        <div class="col-xs-7 pay-1" style="background-color: white;">
+            <ul class="list-group vm1" style="background-color: white;">
+                <li class="list-group-item p-li1" style="background-color: white;">
+                    <div class="col-xs-6 p-li1-tittle">
+                        <span>Thanh toán</span>
+                    </div>
+                </li>
+                <li class="list-group-item" style="background-color: white;">
+                    @using (Html.BeginForm("DatHang", "Home", FormMethod.Post))
+                    {
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Address" name="address">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="   Ghi chú" name="note"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="chuyenkhoan">Thanh toán khi nhận hàng (COD) (Mặc định)</label>
+                            <br />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="form-control sb" value="Đặt hàng">
+                        </div>
+                    }
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-5 pay-2" style="background-color: white;">
+            <ul class="list-group vm2" style="background-color: white;">
+                <li class="list-group-item li_tittledonhang" style="background-color: white;">
+                    <span>Đơn hàng</span>
+                </li>
+                @{
+
+                    long? tong = 0;
+                    long? ts = 0;
+                    if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <p hidden>
+                                @(tong=item.gia)
+                                @(ts+=tong)
+                            </p>
+                            <li class="list-group-item li_ttdonhang" style="background-color: white;">
+                                <div class="img_sanpham">
+                                    <img src="@item.anh">
+                                </div>
+                                <div class="tt_sanpham">
+                                    <span>@item.tensp</span><br />
+                                    <span>Size: @item.kichco</span>
+                                </div>
+                                <div class="gia_sanpham">
+                                    <span>@item.gia đ</span>
+                                </div>
+                                <div class="popple">
+                                    <span>1</span>
+                                </div>
+                            </li>
+                        }
+                    }
+
+                }
+            <li class="list-group-item t_cost" style="background-color: white; font-size: 17px;">
+
+                @if (Model != null)
+                {
+                    <div class="cost_txt">
+                        <span>Tổng cộng: </span>
+                    </div>
+                    <div class="cost">
+                        <b style="color: red">@ts đ</b>
+                    </div>
+                }
+                else
+                {
+                    <h3>Đặt hàng thành công !!!</h3>
+                }
+            </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,194 @@
+.fashion-left{
+	height: 500px;
+	padding-left: 0px;
+}
+.fashion-left1{
+	height: 500px;
+	padding-left: 0px;
+}
+.byn{
+	float: left;
+	width: 173px;
+	padding: 5px;
+	border-radius: 5px;
+	border: 0.5px solid #CCCCCC; 
+}
+.fashion-srm{
+	background: white;
+	position: sticky;
+	top: 0;
+}
+.btn-f{
+	float: left;
+	width: 60px;
+	text-align: center;
+	border-radius: 5px;
+	border: 0px;
+	padding: 6px;
+	margin-left: 4px;
+	background: #B67153;
+	color: white;
+	font-size: 11px;
+	margin-top: 2px;
+}
+.fashion-left{
+	padding-top: 10px;
+}
+.fashion-left1{
+	padding-top: 10px;
+}
+.az{
+	margin-bottom: 10px;
+}
+.f-gia{
+	background: #CCCCCC;
+	height: 40px;
+	font-size: 17px;
+	font-family: 'Courier New';
+	padding-top: 7px;
+}
+.frm-gia{
+	padding-left: 0px;
+	padding-right: 0px;
+	border-left: 1px solid #DDDDDD;
+	border-right: 1px solid #DDDDDD;
+	padding-top: 15px;
+}
+.frm-gia .col-xs-6{
+	padding-left: 0px;
+}
+.fvb{
+	padding-right: 0px;
+}
+.frm-gia input[type=number]{
+	width: 80px;
+	border-radius: 6px;
+	border: 1px solid #CCCCCC;
+	text-align: center;
+}
+.frm-ad{
+	padding-top: 20px;
+	border-left: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+	border-right: 1px solid #DDDDDD;
+	padding-bottom: 10px;
+}
+/*---------*/
+.frm-list{
+	margin-top: 20px;
+	height: 200px;
+}
+.frm-list-txt{
+	width: 100%;
+	height: 40px;
+	font-size: 24px;
+	font-family: 'Courier New';
+}
+.frm-list-li{
+	width: 100%;
+}
+.frm-list-li button{
+	width: 100%;
+	height: 32px;
+	font-family: 'Courier New';
+	font-size: 16px;
+	color: #222222;
+	border-radius: 4px;
+	border: 0.5px solid #8D7C62;
+	background: white;
+	margin-top: 1px;
+}
+@media screen and (max-width: 1198.5px) {
+	.fashion-left{
+		height: 450px;
+	}
+	.fashion-left1{
+		height: 400px;
+	}
+	.byn{
+		width: 125px;
+		font-size: 12px;
+		margin-top: 2px;
+	}
+	.f-gia{
+		font-size: 16px;
+	}
+	.frm-gia{
+		font-size: 13px;
+	}
+	.frm-gia input[type=number]{
+		width: 65px;
+	}
+	.frm-ad button[type=button]{
+		font-size: 11px;
+	}
+	.frm-list{
+		margin-top: 20px;
+		height: 200px;
+	}
+	.frm-list-txt{
+		font-size: 20px;
+	}
+	.frm-list-li button{
+		height: 28px;
+		font-size: 14px;
+	}
+}
+@media screen and (max-width: 990px){
+	.fashion-left{
+		height: 750px;
+	}
+	.fashion-left{
+		padding-top: 14px;
+	}
+	.fashion-left1{
+		height: 400px;
+	}
+	.fashion-left1{
+		padding-top: 14px;
+	}
+	.byn{
+		width: 81px;
+		height: 20px;
+		font-size: 8px;
+		margin-top: 1px;
+	}
+	.btn-f{
+		font-size: 8px;
+		padding: 3px;
+		width: 50px;
+	}
+	.frm-cost{
+		margin-top: 6px;
+	}
+	.f-gia{
+		font-size: 12px;
+		height: 30px;
+	}
+	.frm-gia{
+		font-size: 9px;
+	}
+	.frm-gia input[type=number]{
+		width: 45px;
+	}
+	.frm-ad button[type=button]{
+		font-size: 7px;
+		padding: 3px;
+		width: 50px;
+	}
+	.frm-ad{
+		margin-top: 0px;
+		padding-top: 10px;
+	}
+	.frm-list{
+		margin-top: 10px;
+		height: 200px;
+	}
+	.frm-list-txt{
+		font-size: 18px;
+	}
+	.frm-list-li button{
+		height: 25px;
+		font-size: 12px;
+	}
+}

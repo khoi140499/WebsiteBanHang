@@ -1,0 +1,189 @@
+/*--------------*/
+.fooster{
+	float: left;
+	width: 100%;
+	height: 470px;
+	background-attachment: fixed;
+	background-size: cover;
+	position: relative;
+	/*background: #FBF8F1;*/
+}
+.email{
+	width: 100%;
+	height: 220px;
+	box-sizing: border-box;
+	padding-top: 10px;
+	position: absolute;
+	z-index: 3;
+	padding-top: 50px;
+}
+.nenphu{
+	position: absolute;
+	width: 100%;
+	height: 220px;
+	background: linear-gradient(45deg, #22682a 0%,#9b4a1b 40%,#3a342a 100%);
+	opacity: 0.6;
+	z-index: 2;
+}
+.fooster input[type=text]{
+	width: 100%;
+	padding: 12px;
+	border: 1px solid red;
+	border-radius: 5px;
+	resize: vertical;
+}
+.fooster input[type=submit]{
+	width: 100%;
+	padding: 12px;
+	border-radius: 5px;
+	resize: vertical;
+}
+.col-25{
+	float: left;
+	font-size: 30px;
+	color: #FBF8F1;
+	margin-left: 45px;
+	margin-top: 30px;
+}
+.col-75{
+	float: right;
+	margin-top: 25px;
+	width: 40%;
+}
+.col-85{
+	width: 80px;
+	float: right;
+	margin-top: 25px;
+	margin-left: 5px;
+}
+.row:after{
+	content: '';
+	display: table;
+	clear: both;
+}
+@media screen and (max-width: 600px){
+	.col-25, .col-75{
+		width: 100%;
+	}
+	.fooster input[type=submit]{
+		width: 100%;
+	}
+}
+@media screen and (max-width: 990px){
+	.nenphu{
+		height: 150px;
+	}
+	.email{
+		height: 150px;
+		margin-top: -30px;
+	}
+	.email .col-25 label{
+		font-size: 23px;
+	}
+}
+.fo-end{
+	width: 100%;
+	height: 230px;
+	background: #8D7C62;
+	margin-top: 220px;
+}
+.end-tittle{
+	height: 200px;
+}
+.end-tittle ul{
+	padding-top: 53px;
+}
+.end-tittle a{
+	text-decoration: none;
+	color: white;
+	font-family: 'Courier New';
+}
+.end-tittle a:hover{
+	color: #0FCEE0;
+}
+.end-tittle ul li{
+	border: 0px;
+	background: #8D7C62;
+}
+.gv ul li {
+	border: 0px;
+	background: #8D7C62;
+	color: white;
+}
+.gv{
+	padding: 0px;
+}
+.gv p{
+	text-indent: 40px;
+}
+.ti{
+	font-family: 'Courier New';
+	font-size: 27px;
+}
+.gduoi{
+	width: 100px;
+	height: 1px;
+	background: white;
+	position: absolute;
+}
+.hm{
+	padding-top: 0px;
+}
+.hm ul li{
+	border: 0px;
+	background: #8D7C62;
+	color: white;
+}
+.hm a{
+	text-decoration: none;
+	color: white;
+}
+.hm a:hover{
+	color: #EF4546;
+}
+.km{
+	margin-top: -10px;
+}
+.page-f{
+	float: left;
+	width: 100%;
+	height: 30px;
+	background: #503123;
+	color: white;
+	margin-top: -20px;
+	padding-top: 4px;
+}
+.page-f a{
+	color: white;
+}
+@media screen and (max-width: 1198.5px) {
+	.gv p{
+		font-size: 12px;
+	}
+	.fooster{
+		height: 400px;
+	}
+}
+@media screen and (max-width: 990px){
+	.fooster{
+		height: 400px;
+	}
+	.fo-end{
+		margin-top: 150px;
+	}
+	.gv span{
+		font-size: 17px;
+	}
+	.gv p{
+		font-size: 11px;
+	}
+	.hm span{
+		font-size: 17px;
+	}
+	.end-tittle{
+		padding-top: -60px;
+	}
+	.end-tittle{
+		font-size: 13px;
+	}
+}	

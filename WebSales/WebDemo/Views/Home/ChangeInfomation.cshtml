@@ -1,0 +1,157 @@
+﻿@model WebDemo.Models.User
+
+@{
+    ViewBag.Title = "ChangeInfomation";
+}
+<style>
+    .account_login {
+        width: 60%;
+        float: left;
+        height: 750px;
+        padding-top: 30px;
+    }
+
+    .account_login li {
+        border: 0px;
+     }
+
+    .av {
+        font-size: 40px;
+    }
+
+    .bt {
+        width: 140px;
+        height: 40px;
+        font-size: 16px;
+        text-align: center;
+        padding-left: 10px;
+    }
+
+    #dc {
+        height: 40px;
+    }
+
+    .bts {
+        width: 100%;
+        height: 45px;
+        border: 0px;
+        border-radius: 5px;
+        font-size: 20px;
+    }
+
+    #dc1 {
+        height: 40px;
+        text-align: center;
+        border-radius: 5px;
+        border: 0px;
+        background-color: #C9C9C9;
+        color: black;
+        font-size: 20px;
+    }
+
+        #dc1:hover {
+            text-decoration: none;
+        }
+</style>
+
+<div class="acc">
+    <div class="account_login">
+        <ul class="list-group">
+            <li class="list-group-item av">
+                <span>@TempData["name"]</span>
+            </li>
+
+            @{
+                if (Model != null)
+                {
+                    <li class="list-group-item av">
+                        <span>Chỉnh sửa thông tin</span>
+                    </li>
+                    <li class="list-group-item fr">
+                        @using (Html.BeginForm("ChangeInfomation", "Home", FormMethod.Post, new
+                        {
+                            @name = "changeinfomation",
+                            @onsubmit = "return validationForm()"
+                        }))
+                        {
+                            <input type="text" class="form-control" name="txtUsername" id="dc" value="@Model.username" />
+                            <span class="spanusername" style="color: red;margin-top: 10px;"></span>
+                            <br />
+                            <input type="password" class="form-control" name="txtPassword" id="dc" value="@Model.password" />
+                            <span class="spanpassword" style="color: red;margin-top: 10px;"></span>
+                            <br />
+                            <input type="text" class="form-control" name="txtFullname" id="dc" value="@Model.fullname" />
+                            <span class="spanfullname" style="color: red;margin-top: 10px;"></span>
+                            <br />
+                            <input type="text" class="form-control" name="txtAge" id="dc" value="@Model.age" />
+                            <span class="spanage" style="color: red;margin-top: 10px;"></span>
+                            <br />
+                            <input type="text" class="form-control" name="txtPhone" id="dc" value="@Model.phone" />
+                            <span class="spanphone" style="color: red;margin-top: 10px;"></span>
+                            <br />
+                            <input type="text" class="form-control" name="txtEmail" id="dc" value="@Model.email" />
+                            <span class="spanemail" style="color: red;margin-top: 10px;"></span>
+                            <br />
+                            <input type="text" class="form-control" name="txtAddress" id="dc" value="@Model.address" />
+                            <span class="spanaddress" style="color: red;margin-top: 10px;"></span>
+                            <br />
+                            <input type="submit" name="submit" class="bts" id="dc1" value="Xác nhận" />
+                        }
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>
+<script>
+    function validationForm() {
+        let password = document.forms["changeinfomation"]["txtPassword"].value;
+        let fullname = document.forms["changeinfomation"]["txtFullname"].value;
+        let age = document.forms["changeinfomation"]["txtAge"].value;
+        let phone = document.forms["changeinfomation"]["txtPhone"].value;
+        let email = document.forms["changeinfomation"]["txtEmail"].value;
+        let address = document.forms["changeinfomation"]["txtAddress"].value;
+        if (password == "" || password.length > 20) {
+            document.querySelector(".spanpassword").innerHTML = "Password không được để trống và phải nhỏ hơn 20 ký tự";
+            return false;
+        }
+        else if (fullname == "") {
+            document.querySelector(".spanpassword").innerHTML = "";
+            document.querySelector(".spanfullname").innerHTML = "Fullname không được để trống";
+            return false;
+        }
+        else if (age == 0 || age == "") {
+            document.querySelector(".spanpassword").innerHTML = "";
+            document.querySelector(".spanfullname").innerHTML = "";
+            document.querySelector(".spanage").innerHTML = "Age không được để trống và phải lớn hơn 0";
+            return false;
+        }
+        else if (phone.lenth > 10 || phone == "") {
+            document.querySelector(".spanpassword").innerHTML = "";
+            document.querySelector(".spanfullname").innerHTML = "";
+            document.querySelector(".spanage").innerHTML = "";
+            document.querySelector(".spanphone").innerHTML = "Phone không được để trống và phải có 10 chữ số";
+            return false;
+        }
+        else if (address == "") {
+            document.querySelector(".spanpassword").innerHTML = "";
+            document.querySelector(".spanfullname").innerHTML = "";
+            document.querySelector(".spanage").innerHTML = "";
+            document.querySelector(".spanphone").innerHTML = "";
+            document.querySelector(".spanaddress").innerHTML = "Address không được để trống";
+            return false;
+        }
+        else if (email == "") {
+            document.querySelector(".spanpassword").innerHTML = "";
+            document.querySelector(".spanfullname").innerHTML = "";
+            document.querySelector(".spanage").innerHTML = "";
+            document.querySelector(".spanphone").innerHTML = "";
+            document.querySelector(".spanaddress").innerHTML = "";
+            document.querySelector(".spanemail").innerHTML = "Email không được để trống";
+            return false;
+        }
+        return true;
+    }
+</script>
+
+

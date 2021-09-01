@@ -1,0 +1,152 @@
+.mobile{
+	display: none;
+}
+@media screen and (max-width: 480px) {
+	.main{
+		display: none;
+	}
+	.body{
+		background-position: center;
+		background-attachment: fixed;
+		background-size: cover;
+	}
+	.mobile{
+		display: block;
+		width: 480px;
+		height: 100%;
+		min-height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.ac-m{
+		position: absolute;
+		margin: auto;
+		width: 400px;
+		height: 550px;
+		background: white;
+		box-shadow: 0 0 12px 6px #00000096;
+		box-sizing: border-box;
+		overflow: hidden;
+		z-index: 1;
+	}
+	.dn-m{
+		width: 400px;
+		height: 550px;
+		padding-top: 50px;
+		position: absolute;
+		transition: 0.5s;
+	}
+	.dk-m{
+		width: 400px;
+		height: 550px;
+		position: absolute;
+		margin-top: 20px;
+		margin-left: 400px;
+		transition: 0.5s;
+	}
+	.dk-m ul li{
+		border: 0px;
+	}
+	.dn-m ul li{
+		border: 0px;
+	}
+	.dn-m-li1{
+		font-size: 28px;
+		margin-top: 15px;
+	}
+	.byn{
+		background: white;
+		border: 0.5px solid #339AF0;
+		color: #0F1571;
+	}
+	.bin{
+		background: white;
+		border: 0.5px solid #F57224;
+		color: #EE0000;
+	}
+	.dn-m-li3{
+		font-size: 20px;
+	}
+	.cs-m input[type=email]{
+		height: 45px;
+	}
+	.cs-m input[type=password]{
+		height: 45px;
+	}
+	.cs-m input[type=text]{
+		height: 45px;
+	}
+	.cs-m input[type=number]{
+		height: 45px;
+	}
+	.bt-m{
+		width: 100%;
+		height: 40px;
+		font-size: 20px;
+		background: linear-gradient(to right, #EE0000 , #0F1571);
+		color: white;
+	}
+	#ndk{
+		cursor: pointer;
+	}
+	#ndn-m{
+		cursor: pointer;
+	}
+	.dk-m-li1{
+		font-size: 25px;
+	}
+	.dk-hien{
+		transform: translateX(-400px);
+	}
+	.dk-mat{
+		transform: translateX(400px);
+	}
+	.dn-hien{
+		transform: translateX(0px);
+	}
+	.dn-mat{
+		transform: translateX(-400px);
+	}
+	.menu-back{
+		position: absolute;
+		width: 400px;
+		height: 35px;
+		z-index: 10;
+		margin-top: -259px;
+	}
+	.dmuc-m{
+		width: 400px;
+		height: 35px;
+		box-sizing: border-box;
+		overflow: hidden;
+	}
+	.dmuc-m button{
+		float: left;
+		margin-top: 2px;
+	}
+	.dmuc-m-menu{
+		width: 360px;
+		height: 35px;
+		padding-top: 2px;
+		padding-left: 15px;
+		margin-left: 420px;
+		transition: 0.5s;
+		box-sizing: border-box;
+		overflow: hidden;
+	}
+	.dmuc-m-menu ul li{
+		float: left;
+		padding: 5px 11px;
+		border: 0px;
+	}
+	.dmuc-m-menu img{
+		width: 20px;
+	}
+	.dm-hien{
+		transform: translateX(-380px);
+	}
+	.dm-mat{
+		transform: translateX(400px);
+	}
+}

@@ -1,0 +1,96 @@
+﻿@model WebDemo.Models.User
+@{
+    ViewBag.Title = "Login";
+}
+
+<style>
+    .account_login {
+        width: 60%;
+        float: left;
+        height: 600px;
+        padding-top: 30px;
+    }
+    .account_login li{
+        border: 0px;
+    }
+    .av{
+        font-size: 40px;
+    }
+    .bt{
+        width: 140px;
+        height: 40px;
+        font-size: 16px;
+        text-align: center;
+        padding-left: 10px;
+    }
+    #dc{
+        height: 40px;
+    }
+    .bts{
+        width: 100%;
+        height: 45px;
+        border: 0px;
+        border-radius: 5px;
+        font-size: 20px;
+    }
+</style>
+
+<div class="acc">
+    <div class="account_login">
+        <ul class="list-group">
+            <li class="list-group-item av">
+                <span>Đăng nhập</span>
+            </li>
+            <li class="list-group-item ac_bt">
+                <button type="button" class="btn btn-primary bt">
+                    <i class="fab fa-facebook"> Facebook</i>
+                </button>
+                <button type="button" class="btn btn-light bt">
+                    <i class="fab fa-google"> Google</i>
+                </button>
+            </li>
+            <li class="list-group-item or">
+                <span>OR</span>
+            </li>
+            <li class="list-group-item fr">
+            @if (Model != null)
+            {
+                <h2 style="color: red;">@Model.fullname</h2><br />
+                <h4>@Model.username</h4>
+            }
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @name = "login", @onsubmit = "return validationForm()" }))
+                {
+                    @Html.TextBox("txtUsername", null, new { @class = "form-control", @id = "dc", @placeholder = "Enter username" })
+                    <span class="spanusername" style="color: red;margin-top: 10px;"></span>
+                    <br />
+                    @Html.Password("txtPassword", null, new { @class = "form-control", @id = "dc", @placeholder = "Enter password" })
+                    <span class="spanpassword" style="color: red;margin-top: 10px;"></span>
+                    <br />
+                    <input type="submit" name="submit" class="bts" value="Login" />
+                }
+            </li>
+            <li class="list-group-item dk">
+                <span>Chưa có tài khoản ?</span>
+                <a class="btn btn-light" href="@Url.Action("Register", "Register")"><span>Đăng kí</span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function validationForm() {
+        let username = document.forms["login"]["txtUsername"].value;
+        let password = document.forms["login"]["txtPassword"].value;
+        if (username == "") {
+            document.querySelector(".spanusername").innerHTML = "Username không được để trống";
+            return false;
+        }
+        else if (password == "" || password.length>20) {
+            document.querySelector(".spanusername").innerHTML = "";
+            document.querySelector(".spanpassword").innerHTML = "Password không được để trống và không được quá 20 ký tự";
+            return false;
+        }
+        return true;
+    }
+</script>
+

@@ -1,0 +1,113 @@
+﻿@model PagedList.IPagedList<WebDemo.Models.Sanpham>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "ThoiTrangNu";
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="/Content/timkiem.css">
+<link rel="stylesheet" type="text/css" href="/Content/sanpham.css">
+
+<div class="fashion">
+    <div class="container">
+        <div class="col-xs-3 fashion-left">
+            <div class="fashion-srm">
+                <div class="col-xs-12 frm-cost">
+                    @using (Html.BeginForm("ThoiTrangNu", "Home", FormMethod.Get))
+                    {
+                        <div class="col-xs-12 f-gia">
+                            <span>Lọc theo giá</span>
+                        </div>
+                        <div class="col-xs-12 frm-gia">
+                            <div class="col-xs-6">
+                                <div class="col-xs-12">
+                                    <b>MIN</b>
+                                </div>
+                                <div class="col-xs-12">
+                                    <input type="number" name="fmin" placeholder="1">
+                                </div>
+                            </div>
+                            <div class="col-xs-6 text-right fvb">
+                                <div class="col-xs-12">
+                                    <b>MAX</b>
+                                </div>
+                                <div class="col-xs-12">
+                                    <input type="number" name="fmax" placeholder="10000000">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 text-center frm-ad">
+                            <input type="submit" class="btn btn-danger" value="Áp dụng" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 fashion-right">
+            <div class="col-xs-12 fr-locsanpham">
+                <div class="col-xs-6 text-left">
+                    <span>Hiển thị 1-11 trên 11 sản phẩm</span>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <select>
+                        <option>Giá từ cao đến thấp</option>
+                        <option>Giá từ thấp đến cao</option>
+                    </select>
+                </div>
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-3 text-center fashion-sp sp" id="@item.masp">
+                    <div class="fashion-sp-img">
+                        <img src="@item.anh" alt="spm" class="img-responsive">
+                    </div>
+                    <div class="fashion-sp-if">
+                        <div class="sp-in-gia">
+                            <span>@item.tensp</span><br>
+                            <span>Size: @item.kichco</span><br />
+                            <b style="color: red">@item.giasp</b><b style="color: red">đ</b>
+                        </div>
+                        <div class="sp-in-mh">
+                            @using (Html.BeginForm("Deltails", "Home", FormMethod.Get))
+                                {
+                                    <input type="number" name="masp" value="@item.masp" hidden/>
+                                    <input type="submit" class="btn btn-danger" value="View" style="float:left; 
+                                    height: 30px;line-height: 7px;">
+                                }
+                            <button class="btn btn-danger addcart" type="button">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Add cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div style="height: 70px; width: 100%; float: left; text-align: center">
+                @Html.PagedListPager(Model, page => Url.Action("ThoiTrangNu", "Home", new { page }))
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.addcart').on('click', function () {
+            var masp = parseInt($(this).closest('.sp').prop('id'));
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: 'AddCart',
+                data: "{'masanpham':'" + masp + "'}",
+                success: function (data) {
+                    if (parseInt(data) > 0) {
+                        $(".cartcount").css("display", "block")
+                        $('#count').html(data)
+                    }
+                },
+                error: function (data) {
+                    $('.ids').html(data)
+                }
+            })
+        })
+    })
+</script>

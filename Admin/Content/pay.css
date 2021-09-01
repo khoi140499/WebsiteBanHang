@@ -1,0 +1,375 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+    background: white;
+}
+
+.menu-m {
+    display: none;
+}
+
+.menunho-m {
+    display: none;
+}
+
+.fs-m {
+    display: none;
+}
+
+.paystr {
+    float: left;
+    width: 100%;
+    height: 600px;
+    margin-top: 20px;
+}
+
+.vm1 li {
+    background: #FBF8F1;
+    border: 0px;
+}
+
+.vm2 li {
+    background: #FBF8F1;
+    border: 0px;
+}
+
+.p-li1 {
+    height: 92px;
+}
+
+.p-li1-tittle {
+    font-size: 30px;
+    color: #222222;
+    padding-top: 18px;
+}
+
+.p-li1-dn {
+    font-size: 17px;
+    padding-top: 30px;
+}
+
+    .p-li1-dn a {
+        text-decoration: none;
+    }
+
+.inputchontinh {
+    float: left;
+    width: 230px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.inputchonhuyen {
+    float: right;
+    width: 230px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+textarea {
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.chuyenkhoan {
+    float: left;
+}
+
+.cod {
+    float: right;
+}
+
+.sb {
+    height: 45px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    color: white;
+    font-size: 17px;
+}
+/*-------*/
+.paystr .col-xs-5 {
+    padding-right: 0px;
+}
+
+.li_tittledonhang {
+    font-size: 24px;
+    height: 93px;
+    padding-top: 33px;
+    border-top: 0px;
+}
+
+.li_ttdonhang {
+    height: 130px;
+}
+
+.img_sanpham {
+    float: left;
+    width: 80px;
+}
+
+    .img_sanpham img {
+        width: 80px;
+    }
+
+.popple {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #B67153;
+    color: #FBF8F1;
+    text-align: center;
+    border-radius: 50%;
+    margin-left: 70px;
+}
+
+.tt_sanpham {
+    float: left;
+    width: 200px;
+    margin-left: 30px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.gia_sanpham {
+    float: right;
+    margin-left: 30px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.t_cost {
+    height: 40px;
+}
+
+.cost_txt {
+    float: left;
+}
+
+.cost {
+    float: right;
+}
+
+.li-mgg {
+    height: 60px;
+}
+
+#magg {
+    float: left;
+    width: 350px;
+}
+
+.ad {
+    float: left;
+}
+
+@media screen and (max-width: 1198.5px) {
+    #magg {
+        float: left;
+        width: 265px;
+    }
+
+    .tt_sanpham {
+        font-size: 14px;
+        width: 170px;
+        margin-left: 10px;
+    }
+
+    .gia_sanpham {
+        font-size: 14px;
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .p-li1 {
+        height: 70px;
+    }
+
+    .p-li1-tittle {
+        font-size: 25px;
+    }
+
+    .p-li1-dn {
+        font-size: 16px;
+        padding-top: 25px;
+    }
+
+    .inputchonhuyen {
+        width: 160px;
+    }
+
+    .inputchontinh {
+        width: 160px;
+    }
+
+    .chuyenkhoan {
+        font-size: 11px;
+    }
+
+    .cod {
+        font-size: 11px;
+    }
+
+    .li_tittledonhang {
+        font-size: 20px;
+        height: 72px;
+        padding-top: 33px;
+        border-top: 0px;
+    }
+
+    .li_ttdonhang {
+        height: 100px;
+    }
+
+    .img_sanpham {
+        float: left;
+        width: 80px;
+    }
+
+        .img_sanpham img {
+            width: 60px;
+        }
+
+    .popple {
+        width: 10px;
+        height: 10px;
+        margin-left: 55px;
+        margin-top: -2px;
+        font-size: 8px;
+    }
+
+    .tt_sanpham {
+        width: 130px;
+        margin-left: -5px;
+        margin-top: 10px;
+        font-size: 11px;
+    }
+
+    .gia_sanpham {
+        margin-left: 0px;
+        margin-top: 10px;
+        font-size: 11px;
+    }
+
+    .li-mgg {
+        height: 60px;
+    }
+
+    #magg {
+        float: left;
+        width: 175px;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .paystr {
+        margin-top: 0px;
+    }
+
+    .pay-1 {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .p-li1-tittle {
+        font-size: 20px;
+        padding-left: 0px;
+    }
+
+    .p-li1-dn {
+        font-size: 11px;
+        padding-top: 27px;
+    }
+
+    .inputchontinh {
+        float: left;
+    }
+
+    .inputchonhuyen {
+        float: left;
+        margin-top: 10px;
+    }
+
+    .cod {
+        float: left;
+    }
+
+    .li_tittledonhang {
+        font-size: 20px;
+        height: 72px;
+        padding-top: 30px;
+        border-top: 0px;
+    }
+
+    .li_ttdonhang {
+        height: 70px;
+    }
+
+    .img_sanpham {
+        float: left;
+        width: 45px;
+    }
+
+        .img_sanpham img {
+            width: 45px;
+        }
+
+    .popple {
+        margin-left: 36px;
+    }
+
+    .tt_sanpham {
+        float: left;
+        width: 110px;
+        margin-left: 6px;
+        margin-top: 6px;
+        font-size: 12px;
+    }
+
+    .pay-2 {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .gia_sanpham {
+        position: absolute;
+        margin-left: 52px;
+        margin-top: 41px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .li-mgg {
+        height: 60px;
+    }
+
+    #magg {
+        float: left;
+        width: 110px;
+        height: 25px;
+        padding: 10px;
+    }
+
+    .ad {
+        font-size: 11px;
+        padding: 3px;
+        margin-left: 2px;
+        border-radius: 3px;
+    }
+
+    .li-mgg {
+        height: 40px;
+        font-size: 13px;
+    }
+
+    .phivanchuyen_text {
+        font-size: 12px;
+        height: 10px;
+    }
+
+    .cost_txt {
+        font-size: 12px;
+    }
+}
